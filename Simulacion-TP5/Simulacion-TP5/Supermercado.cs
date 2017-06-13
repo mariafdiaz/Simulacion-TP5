@@ -74,6 +74,17 @@ namespace Simulacion_TP5
             if (rnd >= 80 || rnd < 100) { idRecorrido = 5; }//Gondola
             return idRecorrido;
         }
+        
+        private string generarCadenaRecorrido(int r)
+        {
+            string cadenaRecorrido = "";
+            if (r == 1) { cadenaRecorrido = "V-P"; }
+            if (r == 2) { cadenaRecorrido = "V-C-G"; }
+            if (r == 3) { cadenaRecorrido = "P"; }
+            if (r == 4) { cadenaRecorrido = "C-P-G-V"; }
+            if (r == 5) { cadenaRecorrido = "G"; }
+            return cadenaRecorrido;
+        }
 
         public double generarAleatorio() 
         {
