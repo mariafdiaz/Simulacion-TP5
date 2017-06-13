@@ -267,7 +267,7 @@ namespace Simulacion_TP5
             
             // COLUMNA RECORRIDO // 
             super.IDRecorrido = super.generarAleatorio();
-            string cadena = super.generarCadenaRecorrido(super.generarIdRecorrido(super.AleatorioLlegadaCliente));
+            string cadena = super.generarCadenaRecorrido(super.generarIdRecorrido(super.IDRecorrido));
             dr["*Recorrido* RND"] = super.IDRecorrido;
             dr["Recorrido"] = cadena;
             //dr["idRec"] = ;
