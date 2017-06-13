@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv_simulacion = new System.Windows.Forms.DataGridView();
             this.lbl_gondola = new System.Windows.Forms.Label();
             this.lbl_caja3 = new System.Windows.Forms.Label();
             this.lbl_caja2 = new System.Windows.Forms.Label();
@@ -44,17 +44,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_desde = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lbl_resultado = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_simulacion)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_simulacion
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(205, 21);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(893, 536);
-            this.dataGridView1.TabIndex = 0;
+            this.dgv_simulacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_simulacion.Location = new System.Drawing.Point(205, 21);
+            this.dgv_simulacion.Name = "dgv_simulacion";
+            this.dgv_simulacion.Size = new System.Drawing.Size(893, 536);
+            this.dgv_simulacion.TabIndex = 0;
             // 
             // lbl_gondola
             // 
@@ -214,11 +215,23 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Desde";
             // 
+            // lbl_resultado
+            // 
+            this.lbl_resultado.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lbl_resultado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.lbl_resultado.Location = new System.Drawing.Point(0, 595);
+            this.lbl_resultado.Name = "lbl_resultado";
+            this.lbl_resultado.Size = new System.Drawing.Size(1128, 35);
+            this.lbl_resultado.TabIndex = 34;
+            this.lbl_resultado.Text = " Resultados de la simulación";
+            this.lbl_resultado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // PantallaSimulacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 582);
+            this.ClientSize = new System.Drawing.Size(1128, 630);
+            this.Controls.Add(this.lbl_resultado);
             this.Controls.Add(this.lbl_gondola);
             this.Controls.Add(this.lbl_caja3);
             this.Controls.Add(this.lbl_caja2);
@@ -230,11 +243,11 @@
             this.Controls.Add(this.txt_horas);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_simulacion);
             this.Name = "PantallaSimulacion";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.PantallaSimulacion_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_simulacion)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -244,7 +257,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv_simulacion;
         private System.Windows.Forms.Label lbl_gondola;
         private System.Windows.Forms.Label lbl_caja3;
         private System.Windows.Forms.Label lbl_caja2;
@@ -260,6 +273,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_desde;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_resultado;
     }
 }
 
