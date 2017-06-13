@@ -52,11 +52,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Secciones\Caja.cs" />
-    <Compile Include="Secciones\Carniceria.cs" />
-    <Compile Include="Secciones\Gondola.cs" />
-    <Compile Include="Secciones\Panaderia.cs" />
-    <Compile Include="Secciones\Verduleria.cs" />
+    <Compile Include="Objetos\Caja1.cs" />
+    <Compile Include="Objetos\Caja2.cs" />
+    <Compile Include="Objetos\CajaR.cs" />
+    <Compile Include="Objetos\Carniceria.cs" />
+    <Compile Include="Objetos\Cliente.cs" />
+    <Compile Include="Objetos\Gondola.cs" />
+    <Compile Include="Objetos\Panaderia.cs" />
+    <Compile Include="Objetos\Verduleria.cs" />
     <Compile Include="Supermercado.cs" />
     <EmbeddedResource Include="PantallaSimulacion.resx">
       <DependentUpon>PantallaSimulacion.cs</DependentUpon>

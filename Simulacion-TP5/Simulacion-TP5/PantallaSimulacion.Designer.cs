@@ -143,6 +143,7 @@
             this.btn_generar.TabIndex = 26;
             this.btn_generar.Text = "Generar simulación";
             this.btn_generar.UseVisualStyleBackColor = true;
+            this.btn_generar.Click += new System.EventHandler(this.btn_generar_Click_1);
             // 
             // txt_horas
             // 

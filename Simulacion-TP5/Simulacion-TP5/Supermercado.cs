@@ -8,6 +8,7 @@ namespace Simulacion_TP5
 {
     class Supermercado
     {
+        private Random RND = new Random();
         //EL MOMENTO DE TIEMPO EN EL QUE OCURRE CADA EVENTO//
         private double reloj; //declaramos el reloj 
 
@@ -60,7 +61,33 @@ namespace Simulacion_TP5
             set { idRecorrido = value; }
         }
 
+        public double generarPoisson(double lambda, double RND)
+        {
+            double p = 1;
+            double x = 0;
+            double u = 0;
+            double a = Math.Exp(-lambda);
+            do
+            {
+                u = RND;
+                p = p * u;
+                x++;
 
+            } while (p >= a);
+            return x;
+        }
+
+
+
+        public double generarUniforme(double min, double max)
+        {
+            return Math.Round(RND.NextDouble() * (max - min) + min, 4);
+        }
+        public void sigEvento()
+        {
+
+
+        }
 
     }
 }

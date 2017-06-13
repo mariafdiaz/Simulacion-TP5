@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Simulacion_TP5.Objetos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,17 @@ namespace SIM_TP5
 {
     class Panaderia 
     {
-        
 
 
-           
-
-        
+        private Queue<Cliente> cola;
+        private string estado { get; set; }
+        public int finAtencion { get; set; }
 
         public Panaderia()
         {
-            //Estado = "L";
-           // cola = new Cola();
+            
+            estado = "L";
+            cola = new Queue<Cliente>();
         }
 
       /*  public int calcularFinAtencion(int inicioAtencion)

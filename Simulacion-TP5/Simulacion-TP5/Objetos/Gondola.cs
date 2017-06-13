@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Simulacion_TP5.Objetos;
 
 namespace SIM_TP5
 {
     class Gondola 
     {
-        
-
-       
+        private Queue<Cliente> cola = new Queue<Cliente>();
+        private string estado { get; set; }
+        public int finAtencion { get; set; }
 
         public Gondola()
         {
-           // Estado = "L";
-           // cola = new Cola();
+            estado = "L";
+            cola = new Queue<Cliente>();
         }
 
         public int generarCantArticulos()

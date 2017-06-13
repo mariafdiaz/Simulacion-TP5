@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Simulacion_TP5.Objetos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,13 +17,79 @@ namespace Simulacion_TP5
         private DataTable dt;
         private Supermercado super;
         private static Random RND = new Random();
-
         private int horas, desde, hasta;
 
-        public PantallaSimulacion()
+        private void btn_generar_Click_1(object sender, EventArgs e)
         {
-            InitializeComponent();
+
+            iniciarPrimeraFila();
+
+            
+            dt = new DataTable();
+            //TodasLasColumnasMenosLosClientes
+            inicializarColumnas();
+            //iniciarPrimeraFila
+            iniciarPrimeraFila();
+            //empezar a funcionar
+            agregarColumnaNuevoCliente();
+
+
+
+
         }
+
+        // Cosas para Cliente---------------------------------------------------------------------------------
+
+        // crea la columna del cliente que vino
+        public void proxRecorrido()
+        {
+            DataRow dr = dt.NewRow();
+            super.Reloj = super.ProximaLlegadaCliente;
+
+
+
+
+
+
+
+            super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
+            //super.LlegadaCliente = generarPoisson(0.5, super.AleatorioLlegadaCliente);
+            super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
+
+
+            dr["Reloj"] = super.Reloj;
+
+            dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
+            dr["TiempoLleg"] = super.LlegadaCliente;
+            dr["ProxLleg"] = super.ProximaLlegadaCliente;
+            //dr["idRec"] = i;
+
+
+            //Generar recorrido
+
+            // super.AleatorioRecorrido = Math.Round(RND.NextDouble(), 4);
+            super.AleatorioRecorrido = 0.5;
+            super.IDRecorrido = 3;
+            dr["*Recorrido* RND"] = super.AleatorioRecorrido;
+            dr["Recorrido"] = "P";
+            dr["idRec"] = super.IDRecorrido;
+
+        }
+
+
+        private void agregarColumnaNuevoCliente()
+        {
+            int idCliente = 0;
+            idCliente = idCliente + 1;
+            int i = idCliente;
+
+            //Clientes
+            dt.Columns.Add("*C " + i + "* Estado", typeof(string));
+            // dt.Columns.Add("Actual IDRecorrido C " + i, typeof(Int32));
+            dt.Columns.Add("*C " + i + "* Actual IDRecorrido", typeof(Int32));
+            //  dt.Columns.Add("Cont CantArticulos C " + i, typeof(Int32));
+        }
+
 
         private void PantallaSimulacion_Load(object sender, EventArgs e)
         {
@@ -34,22 +101,9 @@ namespace Simulacion_TP5
             txt_hasta.Text = "30";
         }
 
-        private void btn_generar_Click(object sender, EventArgs e)
-        {
-            // --- La idea es hacer limpieza
-            //dgv_simulacion.DataSource = null;
-            //dgv_simulacion.Refresh();
-            //dt = new DataTable();
-            //dr = dt.NewRow();
-
-            if (this.validar_campos())
-            {
-               // this.generar_tabla22xt();
-            }
-        }
-
-        // para validar que los valores de los campos del form esten bien ingresados
-        private Boolean validar_campos()
+       
+    // para validar que los valores de los campos del form esten bien ingresados
+    private Boolean validar_campos()
         {
             if (txt_horas.Text == "")
             {
@@ -71,17 +125,7 @@ namespace Simulacion_TP5
             return true;
         }
 
-        // ESTE METODO ES PARA GENERAR LA TABLA PERO VA DE PRUEBA PARA NO PISAR EL METODO QUE YA ESTA
-        private void generar_tablaDEPRUEBA()
-        {
-            dt = new DataTable();
-            this.inicializarColumnas();
-
-            // inicializar variables para la tabla
-            super = new Supermercado();
-
-        }
-
+        
 
 
         private void colorColumnas()
@@ -236,12 +280,12 @@ namespace Simulacion_TP5
         {
             DataRow dr = dt.NewRow();
 
-
+          
 
             super.Reloj = 0.0;
 
             super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
-            super.LlegadaCliente = generarPoisson(0.5, super.AleatorioLlegadaCliente);
+            super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
             super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
 
             dr["Reloj"] = super.Reloj;
@@ -298,31 +342,11 @@ namespace Simulacion_TP5
 
 
 
-        public static double generarPoisson(double lambda, double RND)
+       
+
+        public PantallaSimulacion()
         {
-            double p = 1;
-            double x = 0;
-            double u = 0;
-            double a = Math.Exp(-lambda);
-            do
-            {
-                u = RND;
-                p = p * u;
-                x++;
-
-            } while (p >= a);
-            return x;
-        }
-
-
-        public static double generarUniforme(double min, double max)
-        {
-            return Math.Round(RND.NextDouble() * (max - min) + min, 4);
-        }
-        public void sigEvento()
-        {
-           
-
+            InitializeComponent();
         }
 
 
