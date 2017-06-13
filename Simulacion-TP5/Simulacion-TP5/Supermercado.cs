@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,8 @@ namespace Simulacion_TP5
             get { return reloj; }
             set { reloj = value; }
         }
+       
+        
 
         //NUMERO ALEATORIO PARA SABER LA PROXIMA LLEGADA//
         private double aleatorioLlegadaCliente; //es el rnd que se muestra que calcula el tiempo entre llegadas

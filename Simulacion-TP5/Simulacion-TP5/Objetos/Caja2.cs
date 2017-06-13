@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulacion_TP5.Objetos
 {
-    class Caja2
+    public class Caja2
     {
         private Queue<Cliente> cola = new Queue<Cliente>();
         private string estado { get; set; }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Simulacion_TP5.Objetos;
 
         
-namespace SIM_TP5
+namespace Simulacion_TP5.Objetos
 {
-    class Carniceria 
+    public class Carniceria 
     {
         private Queue<Cliente> cola = new Queue<Cliente>();
         private string estado { get; set; }

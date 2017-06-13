@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simulacion_TP5.Objetos
 {
-    class Cliente
+     public class Cliente
     {
             public int id { get; set; }
             public string Estado { get; set; }      // SA: siendo atendido - EA: esperando atencion

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIM_TP5
+namespace Simulacion_TP5.Objetos
 {
-    class Verduleria
+    public class Verduleria
     {
 
         private Queue<Cliente> cola = new Queue<Cliente>();

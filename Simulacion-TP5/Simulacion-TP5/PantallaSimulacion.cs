@@ -1,31 +1,29 @@
-﻿using Simulacion_TP5.Objetos;
+﻿
+
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Simulacion_TP5.Objetos;
 
 namespace Simulacion_TP5
 {
     public partial class PantallaSimulacion : Form
     {
 
-        private DataTable dt;
-        private Supermercado super;
+        private DataTable dt = new DataTable();
+        private Supermercado super = new Supermercado();
         private static Random RND = new Random();
+        //Inicializar Objetos
+       
         private int horas, desde, hasta;
 
         private void btn_generar_Click_1(object sender, EventArgs e)
         {
-
-            iniciarPrimeraFila();
+            
 
             
-            dt = new DataTable();
+           
             //TodasLasColumnasMenosLosClientes
             inicializarColumnas();
             //iniciarPrimeraFila
@@ -33,7 +31,8 @@ namespace Simulacion_TP5
             //empezar a funcionar
             agregarColumnaNuevoCliente();
 
-
+            this.dgv_simulacion.DataSource = dt;
+            this.colorColumnas();
 
 
         }
@@ -130,79 +129,81 @@ namespace Simulacion_TP5
 
         private void colorColumnas()
         {
-            Color llegCliente = Color.WhiteSmoke;
+            Color llegCliente = Color.Aqua;
             dgv_simulacion.Columns[2].DefaultCellStyle.BackColor = llegCliente;
             dgv_simulacion.Columns[3].DefaultCellStyle.BackColor = llegCliente;
             dgv_simulacion.Columns[4].DefaultCellStyle.BackColor = llegCliente;
             Color recorrido = Color.LightGray;
             dgv_simulacion.Columns[5].DefaultCellStyle.BackColor = recorrido;
             dgv_simulacion.Columns[6].DefaultCellStyle.BackColor = recorrido;
-            dgv_simulacion.Columns[7].DefaultCellStyle.BackColor = recorrido;
+           
             // VERDULERIA
             Color verduleria = Color.LightGreen;
             lbl_verduleria.BackColor = verduleria;
             lbl_verduleria.Visible = true;
+            dgv_simulacion.Columns[7].DefaultCellStyle.BackColor = verduleria;
             dgv_simulacion.Columns[8].DefaultCellStyle.BackColor = verduleria;
             dgv_simulacion.Columns[9].DefaultCellStyle.BackColor = verduleria;
-            dgv_simulacion.Columns[10].DefaultCellStyle.BackColor = verduleria;
             // CARNICERIA
             Color carniceria = Color.LightSalmon;
             lbl_carniceria.BackColor = carniceria;
             lbl_carniceria.Visible = true;
+            dgv_simulacion.Columns[10].DefaultCellStyle.BackColor = carniceria;
             dgv_simulacion.Columns[11].DefaultCellStyle.BackColor = carniceria;
             dgv_simulacion.Columns[12].DefaultCellStyle.BackColor = carniceria;
-            dgv_simulacion.Columns[13].DefaultCellStyle.BackColor = carniceria;
             // PANADERIA
             Color panaderia = Color.LightBlue;
             lbl_panaderia.BackColor = panaderia;
             lbl_panaderia.Visible = true;
-            dgv_simulacion.Columns[14].DefaultCellStyle.BackColor = panaderia;
+            dgv_simulacion.Columns[13].DefaultCellStyle.BackColor = panaderia;
             // GONDOLA
             Color gondola = Color.PaleVioletRed;
             lbl_gondola.BackColor = gondola;
             lbl_gondola.Visible = true;
+            dgv_simulacion.Columns[14].DefaultCellStyle.BackColor = gondola;
             dgv_simulacion.Columns[15].DefaultCellStyle.BackColor = gondola;
             dgv_simulacion.Columns[16].DefaultCellStyle.BackColor = gondola;
-            dgv_simulacion.Columns[17].DefaultCellStyle.BackColor = gondola;
             // CAJA RAPIDA
             Color cajaRapida = Color.DarkKhaki;
             lbl_cajaRapida.BackColor = cajaRapida;
             lbl_cajaRapida.Visible = true;
+            dgv_simulacion.Columns[17].DefaultCellStyle.BackColor = cajaRapida;
             dgv_simulacion.Columns[18].DefaultCellStyle.BackColor = cajaRapida;
-            dgv_simulacion.Columns[19].DefaultCellStyle.BackColor = cajaRapida;
             // CAJA 2
             Color caja2 = Color.PaleGoldenrod;
             lbl_caja2.BackColor = caja2;
             lbl_caja2.Visible = true;
+            dgv_simulacion.Columns[19].DefaultCellStyle.BackColor = caja2;
             dgv_simulacion.Columns[20].DefaultCellStyle.BackColor = caja2;
-            dgv_simulacion.Columns[21].DefaultCellStyle.BackColor = caja2;
             // CAJA 3
             Color caja3 = Color.LemonChiffon;
             lbl_caja3.BackColor = caja3;
             lbl_caja3.Visible = true;
+            dgv_simulacion.Columns[21].DefaultCellStyle.BackColor = caja3;
             dgv_simulacion.Columns[22].DefaultCellStyle.BackColor = caja3;
-            dgv_simulacion.Columns[23].DefaultCellStyle.BackColor = caja3;
 
-            dgv_simulacion.Columns[22].DefaultCellStyle.BackColor = verduleria;
             dgv_simulacion.Columns[23].DefaultCellStyle.BackColor = verduleria;
+            dgv_simulacion.Columns[24].DefaultCellStyle.BackColor = verduleria;
 
-            dgv_simulacion.Columns[24].DefaultCellStyle.BackColor = carniceria;
             dgv_simulacion.Columns[25].DefaultCellStyle.BackColor = carniceria;
+            dgv_simulacion.Columns[26].DefaultCellStyle.BackColor = carniceria;
 
-            dgv_simulacion.Columns[26].DefaultCellStyle.BackColor = panaderia;
             dgv_simulacion.Columns[27].DefaultCellStyle.BackColor = panaderia;
+            dgv_simulacion.Columns[28].DefaultCellStyle.BackColor = panaderia;
 
-            dgv_simulacion.Columns[28].DefaultCellStyle.BackColor = gondola;
             dgv_simulacion.Columns[29].DefaultCellStyle.BackColor = gondola;
+            dgv_simulacion.Columns[30].DefaultCellStyle.BackColor = gondola;
 
-            dgv_simulacion.Columns[30].DefaultCellStyle.BackColor = cajaRapida;
             dgv_simulacion.Columns[31].DefaultCellStyle.BackColor = cajaRapida;
+            dgv_simulacion.Columns[32].DefaultCellStyle.BackColor = cajaRapida;
 
-            dgv_simulacion.Columns[32].DefaultCellStyle.BackColor = caja2;
             dgv_simulacion.Columns[33].DefaultCellStyle.BackColor = caja2;
+            dgv_simulacion.Columns[34].DefaultCellStyle.BackColor = caja2;
 
-            dgv_simulacion.Columns[34].DefaultCellStyle.BackColor = caja3;
             dgv_simulacion.Columns[35].DefaultCellStyle.BackColor = caja3;
+            dgv_simulacion.Columns[36].DefaultCellStyle.BackColor = caja3;
+            //contador
+            dgv_simulacion.Columns[37].DefaultCellStyle.BackColor = Color.Gainsboro;
         }
 
         private void inicializarColumnas()
@@ -218,7 +219,6 @@ namespace Simulacion_TP5
             // RECORRIDO
             dt.Columns.Add("*Recorrido* RND", typeof(double));
             dt.Columns.Add("Recorrido", typeof(string));
-            dt.Columns.Add("idRec", typeof(Int32));
             // VERDULERIA
             dt.Columns.Add("*FinAtencion Verduleria* RND", typeof(double));
             dt.Columns.Add("Tiempo AtencionV", typeof(double));
@@ -265,8 +265,6 @@ namespace Simulacion_TP5
             // CAJA 3 
             dt.Columns.Add("*Caja3* Estado", typeof(string));
             dt.Columns.Add("\nColaC3", typeof(Int32));
-            //ContClientes AtendidosVerduleria
-            dt.Columns.Add("ContClientes AtendidosVerduleria", typeof(Int32));
             //ContClientes Atendidos
             dt.Columns.Add("ContClientes Atendidos", typeof(Int32));
 
@@ -334,7 +332,7 @@ namespace Simulacion_TP5
             {
                 dr["\nCola" + item] = 0;
             }
-
+            
             //ContClientes Atendidos
             dr["ContClientes Atendidos"] = 0;
             dt.Rows.Add(dr);

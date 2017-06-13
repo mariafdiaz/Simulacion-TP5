@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SIM_TP5
+namespace Simulacion_TP5.Objetos
 {
-    class Caja1
+    public class Caja1
     {
 
         private Queue<Cliente> cola = new Queue<Cliente>();
