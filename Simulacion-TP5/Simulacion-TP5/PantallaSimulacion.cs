@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Simulacion_TP5
 {
-    public partial class Form1 : Form
+    public partial class PantallaSimulacion : Form
     {
-        public Form1()
+        public PantallaSimulacion()
         {
             InitializeComponent();
         }
