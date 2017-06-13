@@ -52,6 +52,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Secciones\Caja.cs" />
+    <Compile Include="Secciones\Carniceria.cs" />
+    <Compile Include="Secciones\Gondola.cs" />
+    <Compile Include="Secciones\Panaderia.cs" />
+    <Compile Include="Secciones\Verduleria.cs" />
     <Compile Include="Supermercado.cs" />
     <EmbeddedResource Include="PantallaSimulacion.resx">
       <DependentUpon>PantallaSimulacion.cs</DependentUpon>

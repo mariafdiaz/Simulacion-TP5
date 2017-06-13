@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SIM_TP5
 {
-    class Gondola : Seccion
+    class Gondola 
     {
         
 
@@ -14,8 +14,8 @@ namespace SIM_TP5
 
         public Gondola()
         {
-            Estado = "L";
-            cola = new Cola();
+           // Estado = "L";
+           // cola = new Cola();
         }
 
         public int generarCantArticulos()

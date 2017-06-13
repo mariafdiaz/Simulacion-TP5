@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SIM_TP5
 {
-    class Carniceria : Seccion
+    class Carniceria 
     {
       
         public double tiempoAtencion { get; set; }
@@ -15,12 +15,13 @@ namespace SIM_TP5
         private double A = 1;
         private double B = 3;
 
+
         public double RNDVCarniceria { get; set; }
 
         public Carniceria()
         {
             string Estado = "L";
-            cola = new Cola();
+            //cola = new Cola();
         }
 
       
@@ -45,23 +46,23 @@ namespace SIM_TP5
         //    return estadoCliente;
         //}
         
-        public int calcularFinAtencion(int inicioAtencion)
-        {
-            Random RND = new Random();
-            double x = 0;
+        //public int calcularFinAtencion(int inicioAtencion)
+        //{
+        //    Random RND = new Random();
+        //    double x = 0;
 
-            if (Estado == "L")
-            {
-                x = Math.Round(RND.NextDouble() * (B - A) + A, 4);
-                finAtencion = tiempoAtencion + inicioAtencion;
-            }
-            else
-            {
-                tiempoAtencion = 0;
-                finAtencion = 0;
-            }
-            return (int)x;
-        }
+        //  //  if (Estado == "L")
+        //   // {
+        //        x = Math.Round(RND.NextDouble() * (B - A) + A, 4);
+        //    //    finAtencion = tiempoAtencion + inicioAtencion;
+        //  //  }
+        //   // else
+        //   // {
+        //        tiempoAtencion = 0;
+        //        finAtencion = 0;
+        //    }
+        //    return (int)x;
+        //}
 
 
     }

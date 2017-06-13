@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace SIM_TP5
 {
-    class Verduleria : Seccion
+    class Verduleria
     {
-       
+
 
         public int tiempoAtencion { get; set; }
 
         public int finAtencion { get; set; }
 
-       
+
 
         private double lambdaVerduleria = 2.00;
 
@@ -22,13 +22,13 @@ namespace SIM_TP5
 
         public Verduleria()
         {
-            Estado = "L";
-            cola = new Cola();
+            // Estado = "L";
+            //cola = new Cola();
         }
 
         public Verduleria(string estado, int tiempo, int cola, int tiempoFin)
         {
-            Estado = estado;
+            // Estado = estado;
             tiempoAtencion = tiempo;
             //Cola = cola;
             finAtencion = tiempoFin;
@@ -37,18 +37,18 @@ namespace SIM_TP5
         public String estadoCliente()
         {
             string estadoCliente = "";
-            if (Estado == "Oc")
+            // if (Estado == "Oc")
             {
                 estadoCliente = "EAV";
-               // Cola = Cola + 1;
-            }
-            else
-            {
+                // Cola = Cola + 1;
+           // }
+          //  else
+            } {
                 estadoCliente = "SAV";
-                Estado = "Oc";
-               // if (Cola > 0)
+                // Estado = "Oc";
+                // if (Cola > 0)
                 {
-                   // Cola = Cola - 1;
+                    // Cola = Cola - 1;
                 }
             }
             return estadoCliente;
@@ -63,7 +63,7 @@ namespace SIM_TP5
         public void generarServicioVerduleria(int reloj)
         {
             Random RND = new Random();
-            if (Estado == "L")
+            // if (Estado == "L")
             {
                 double p;
                 double x;
@@ -83,12 +83,14 @@ namespace SIM_TP5
 
                 //tiempoAtencion = Math.Round(x, 2);
                 finAtencion = tiempoAtencion + reloj;
-            }
-            else
+               
+           // }
+           // else
             {
-                tiempoAtencion = 0;
-                finAtencion = 0;
+                    tiempoAtencion = 0;
+                    finAtencion = 0;
+                }
             }
         }
     }
-}
+    }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SIM_TP5
 {
-    class Panaderia : Seccion
+    class Panaderia 
     {
         
 
@@ -17,8 +17,8 @@ namespace SIM_TP5
 
         public Panaderia()
         {
-            Estado = "L";
-            cola = new Cola();
+            //Estado = "L";
+           // cola = new Cola();
         }
 
       /*  public int calcularFinAtencion(int inicioAtencion)

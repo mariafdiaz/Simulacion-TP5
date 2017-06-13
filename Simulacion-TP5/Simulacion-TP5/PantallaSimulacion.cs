@@ -12,9 +12,21 @@ namespace Simulacion_TP5
 {
     public partial class PantallaSimulacion : Form
     {
+
+        private DataTable dt;
+        private Supermercado super;
+        private static Random RND = new Random();
+        
+
+
         public PantallaSimulacion()
         {
             InitializeComponent();
+        }
+
+        private void PantallaSimulacion_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
