@@ -10,9 +10,7 @@ namespace Simulacion_TP5
 {
     public partial class PantallaSimulacion : Form
     {
-        //------------------------------------------------------------------------------------------------------------------------------
-        //-------------------------------------------------A---T----R---I--B--U--T---O---S-----------------------------------------
-
+        //ATRIBUTOS//
         private DataTable dt = new DataTable();
         private Supermercado super = new Supermercado();
         private static Random RND = new Random();
@@ -26,39 +24,25 @@ namespace Simulacion_TP5
         private CajaR cajaR = new CajaR();
 
 
-        //------------------------------------------------------------------------------------------------------------------------------
-        //------------------------------------------------F--U--N--C--I--O--N--A--L--I--D--A--D-----------------------------------------
+        //FUNCIONALIDAD//
         private void btn_generar_Click_1(object sender, EventArgs e)
         {
-            //TodasLasColumnasMenosLosClientes
-            inicializarColumnas();
-            //iniciarPrimeraFila
-            iniciarPrimeraFila();
-            //empezar a funcionar
-            agregarColumnaNuevoCliente();
-
+            inicializarColumnas(); //Todas las columnas menos los clientes           
+            iniciarPrimeraFila();//iniciarPrimeraFila
+            agregarColumnaNuevoCliente(); //empezar a funcionar
             this.dgv_simulacion.DataSource = dt;
             this.colorColumnas();
-
-
         }
-
-       
-
-        // crea la columna del cliente que vino
-        public void proxRecorrido()
+        
+        public void proxRecorrido()  // crea la columna del cliente que vino
         {
             DataRow dr = dt.NewRow();
             super.Reloj = super.ProximaLlegadaCliente;
-
-            
-            super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
+            super.AleatorioLlegadaCliente = super.generarAleatorio();
             //super.LlegadaCliente = generarPoisson(0.5, super.AleatorioLlegadaCliente);
             super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
 
-
             dr["Reloj"] = super.Reloj;
-
             dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
             dr["TiempoLleg"] = super.LlegadaCliente;
             dr["ProxLleg"] = super.ProximaLlegadaCliente;
@@ -66,12 +50,9 @@ namespace Simulacion_TP5
 
 
             //Generar recorrido
-
-            // super.AleatorioRecorrido = Math.Round(RND.NextDouble(), 4);
-            super.AleatorioRecorrido = 0.5;
             super.IDRecorrido = 3;
-            dr["*Recorrido* RND"] = super.AleatorioRecorrido;
-            dr["Recorrido"] = "P";
+            dr["*Recorrido* RND"] = super.generarAleatorio();
+            dr["Recorrido"] = "P"; 
             dr["idRec"] = super.IDRecorrido;
 
         }
@@ -97,11 +78,11 @@ namespace Simulacion_TP5
     
 
 
-        //------------------------------------------------------------------------------------------------------------------------------
-        //-----------------------------------------I--N---T--E--R---F--A--Z--------------------------------------------------------------
+        // -----------------INTERFAZ------------------//
+
         private int horas, desde, hasta;
-        // para validar que los valores de los campos del form esten bien ingresados
-        private Boolean validar_campos()
+        
+        private Boolean validar_campos() // para validar que los valores de los campos del form esten bien ingresados
         {
             if (txt_horas.Text == "")
             {
@@ -111,8 +92,8 @@ namespace Simulacion_TP5
             desde = Convert.ToInt32(txt_desde.Text);
             hasta = Convert.ToInt32(txt_hasta.Text);
 
-            // valida el rango
-            if (desde >= hasta || hasta > horas)
+            
+            if (desde >= hasta || hasta > horas) // valida el rango
             {
                 MessageBox.Show("El rango ingresado no es válido.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_desde.Text = "";
