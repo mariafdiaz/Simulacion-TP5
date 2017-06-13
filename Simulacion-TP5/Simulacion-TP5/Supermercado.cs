@@ -64,7 +64,7 @@ namespace Simulacion_TP5
 
 
         //METODOS PARA LOS RECORRIDOS//
-        private int generarRecorrido(double rnd) //para ver en donde cae el aleatorio
+        public int generarRecorrido(double rnd) //para ver en donde cae el aleatorio
         {
             int idRecorrido=0;
             if (rnd >= 0 || rnd < 20) { idRecorrido = 1; } //Verduleria-Panaderia
@@ -75,7 +75,7 @@ namespace Simulacion_TP5
             return idRecorrido;
         }
         
-        private string generarCadenaRecorrido(int r)
+        public string generarCadenaRecorrido(int r)
         {
             string cadenaRecorrido = "";
             if (r == 1) { cadenaRecorrido = "V-P"; }
