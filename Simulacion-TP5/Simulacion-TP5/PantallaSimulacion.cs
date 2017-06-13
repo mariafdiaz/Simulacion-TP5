@@ -72,11 +72,6 @@ namespace Simulacion_TP5
         }
 
 
-       
-
-       
-    
-
 
         // -----------------INTERFAZ------------------//
 
@@ -257,24 +252,24 @@ namespace Simulacion_TP5
         private void iniciarPrimeraFila()
         {
             DataRow dr = dt.NewRow();
-
-          
-
             super.Reloj = 0.0;
-
-            super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
+            super.AleatorioLlegadaCliente = super.generarAleatorio();
             super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
             super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
 
+            //COLUMNA LLEGADA CLIENTE//
             dr["Reloj"] = super.Reloj;
-
             dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
             dr["TiempoLleg"] = super.LlegadaCliente;
             dr["ProxLleg"] = super.ProximaLlegadaCliente;
             
-            // RECORRIDO
-            //dr["*Recorrido* RND"] = ;
-            //dr["Recorrido"] = ;
+            
+            
+            // COLUMNA RECORRIDO // 
+            super.IDRecorrido = super.generarAleatorio();
+            string cadena = super.generarCadenaRecorrido(super.generarIdRecorrido(super.AleatorioLlegadaCliente));
+            dr["*Recorrido* RND"] = super.IDRecorrido;
+            dr["Recorrido"] = cadena;
             //dr["idRec"] = ;
             //// VERDULERIA
             //dr["*FinAtencion Verduleria* RND"] = ;
