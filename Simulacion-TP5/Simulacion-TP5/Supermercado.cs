@@ -1,4 +1,4 @@
-﻿
+﻿using Simulacion_TP5.Objetos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

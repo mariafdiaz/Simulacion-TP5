@@ -1,11 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Simulacion_TP5.Objetos;
 
-        
+
 namespace Simulacion_TP5.Objetos
 {
     public class Carniceria 

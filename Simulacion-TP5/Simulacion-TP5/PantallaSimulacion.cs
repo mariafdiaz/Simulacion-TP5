@@ -10,20 +10,26 @@ namespace Simulacion_TP5
 {
     public partial class PantallaSimulacion : Form
     {
+        //------------------------------------------------------------------------------------------------------------------------------
+        //-------------------------------------------------A---T----R---I--B--U--T---O---S-----------------------------------------
 
         private DataTable dt = new DataTable();
         private Supermercado super = new Supermercado();
         private static Random RND = new Random();
-        //Inicializar Objetos
-       
-        private int horas, desde, hasta;
+        //Instaciación de clases
+        private Verduleria verduleria = new Verduleria();
+        private Carniceria carniceria = new Carniceria();
+        private Panaderia panaderia = new Panaderia();
+        private Gondola gondola = new Gondola();
+        private Caja1 caja1 = new Caja1();
+        private Caja2 caja2 = new Caja2();
+        private CajaR cajaR = new CajaR();
 
+
+        //------------------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------F--U--N--C--I--O--N--A--L--I--D--A--D-----------------------------------------
         private void btn_generar_Click_1(object sender, EventArgs e)
         {
-            
-
-            
-           
             //TodasLasColumnasMenosLosClientes
             inicializarColumnas();
             //iniciarPrimeraFila
@@ -37,7 +43,7 @@ namespace Simulacion_TP5
 
         }
 
-        // Cosas para Cliente---------------------------------------------------------------------------------
+       
 
         // crea la columna del cliente que vino
         public void proxRecorrido()
@@ -45,12 +51,7 @@ namespace Simulacion_TP5
             DataRow dr = dt.NewRow();
             super.Reloj = super.ProximaLlegadaCliente;
 
-
-
-
-
-
-
+            
             super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
             //super.LlegadaCliente = generarPoisson(0.5, super.AleatorioLlegadaCliente);
             super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
@@ -86,23 +87,21 @@ namespace Simulacion_TP5
             dt.Columns.Add("*C " + i + "* Estado", typeof(string));
             // dt.Columns.Add("Actual IDRecorrido C " + i, typeof(Int32));
             dt.Columns.Add("*C " + i + "* Actual IDRecorrido", typeof(Int32));
-            //  dt.Columns.Add("Cont CantArticulos C " + i, typeof(Int32));
+            dt.Columns.Add("Cont CantArticulos C " + i, typeof(Int32));
         }
 
-
-        private void PantallaSimulacion_Load(object sender, EventArgs e)
-        {
-            lbl_resultado.Text = "";
-
-            // valores por defecto
-            txt_horas.Text = "30";
-            txt_desde.Text = "0";
-            txt_hasta.Text = "30";
-        }
 
        
-    // para validar que los valores de los campos del form esten bien ingresados
-    private Boolean validar_campos()
+
+       
+    
+
+
+        //------------------------------------------------------------------------------------------------------------------------------
+        //-----------------------------------------I--N---T--E--R---F--A--Z--------------------------------------------------------------
+        private int horas, desde, hasta;
+        // para validar que los valores de los campos del form esten bien ingresados
+        private Boolean validar_campos()
         {
             if (txt_horas.Text == "")
             {
@@ -124,7 +123,7 @@ namespace Simulacion_TP5
             return true;
         }
 
-        
+
 
 
         private void colorColumnas()
@@ -291,7 +290,7 @@ namespace Simulacion_TP5
             dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
             dr["TiempoLleg"] = super.LlegadaCliente;
             dr["ProxLleg"] = super.ProximaLlegadaCliente;
-
+            
             // RECORRIDO
             //dr["*Recorrido* RND"] = ;
             //dr["Recorrido"] = ;
@@ -346,7 +345,15 @@ namespace Simulacion_TP5
         {
             InitializeComponent();
         }
+        private void PantallaSimulacion_Load(object sender, EventArgs e)
+        {
+            lbl_resultado.Text = "";
 
+            // valores por defecto
+            txt_horas.Text = "30";
+            txt_desde.Text = "0";
+            txt_hasta.Text = "30";
+        }
 
     }
 }

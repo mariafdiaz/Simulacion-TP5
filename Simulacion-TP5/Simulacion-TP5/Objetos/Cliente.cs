@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Simulacion_TP5.Objetos
+﻿namespace Simulacion_TP5.Objetos
 {
-     public class Cliente
+    public class Cliente
     {
             public int id { get; set; }
             public string Estado { get; set; }      // SA: siendo atendido - EA: esperando atencion
