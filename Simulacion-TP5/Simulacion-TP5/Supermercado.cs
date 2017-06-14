@@ -17,7 +17,7 @@ namespace Simulacion_TP5
         private double proximaLlegadaCliente; //proxima llegada del cliente - Metodo calcular tiempo proxima llegada(parametro reloj actual + cant de minutos para prox llegada de pasajero)
         private double aleatorioRecorrido; 
         private double idRecorrido;
-
+        private string eventoSiguiente;
 
 
 
@@ -28,6 +28,7 @@ namespace Simulacion_TP5
         public double ProximaLlegadaCliente { get { return proximaLlegadaCliente; } set { proximaLlegadaCliente = value; }}
         public double AleatorioRecorrido { get { return aleatorioRecorrido; }    set { aleatorioRecorrido = value; }}    
         public double IDRecorrido { get { return idRecorrido; } set { idRecorrido = value; }}
+        public string EventoSiguiente { get { return eventoSiguiente; } set { eventoSiguiente = value; } }
 
 
 
@@ -93,6 +94,8 @@ namespace Simulacion_TP5
             return rnd;
 
         }
+
+        
 
 
 }
