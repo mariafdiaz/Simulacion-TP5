@@ -27,78 +27,89 @@ namespace Simulacion_TP5
         //FUNCIONALIDAD//
         private void btn_generar_Click_1(object sender, EventArgs e)
         {
-            inicializarColumnas(); //Todas las columnas menos los clientes           
-            iniciarPrimeraFila();//iniciarPrimeraFila
-            agregarColumnaNuevoCliente(); //empezar a funcionar
-            
-            while (super.Reloj < horas)
+            if (validar_campos())
             {
-                
-                switch (super.EventoSiguiente) //Que tipo de Evento es?
+                inicializarColumnas(); //Todas las columnas menos los clientes           
+                iniciarPrimeraFila();//iniciarPrimeraFila
+                agregarColumnaNuevoCliente(); //empezar a funcionar
+                MessageBox.Show(super.EventoSiguiente + " " + super.ProximaLlegadaCliente + " " + super.ProximaLlegadaCliente);
+                while (super.Reloj < horas)
                 {
-                    case "LLC"://llegada Cliente 
-                        {
 
-                            //DataRow dr = dt.NewRow();
-                            //super.Reloj = super.ProximaLlegadaCliente;
-                            //super.AleatorioLlegadaCliente = super.generarAleatorio();
-                            //super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
-                            //super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
-                            //dr["Reloj"] = super.Reloj;
-                            //dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
-                            //dr["TiempoLleg"] = super.LlegadaCliente;
-                            //dr["ProxLleg"] = super.ProximaLlegadaCliente;
-                            
-                            //dt.Rows.Add(dr);
+                    switch (super.EventoSiguiente) //Que tipo de Evento es?
+                    {
+                        case "LLC"://llegada Cliente 
+
+
+                            DataRow dr = dt.NewRow();
+
+                            super.Reloj = super.ProximaLlegadaCliente;
+                            super.AleatorioLlegadaCliente = super.generarAleatorio();
+                            super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
+                            super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
+                            dr["Reloj"] = super.Reloj;
+                            dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
+                            dr["TiempoLleg"] = super.LlegadaCliente;
+                            dr["ProxLleg"] = super.ProximaLlegadaCliente;
+                            MessageBox.Show(super.EventoSiguiente + " " + super.ProximaLlegadaCliente + " " + super.ProximaLlegadaCliente);
+
+                            dt.Rows.Add(dr);
                             break;
 
-                        }
-                    case "FAP"://Fin Atencion Panaderia
-                        {
-                            break;
-                        }
 
-                    case "FAC"://Fin Atencion Carniceria
-                        {
-                            break;
-                        }
+                        case "FAP"://Fin Atencion Panaderia
 
-                    case "FAG"://Fin Atencion Gondola
-                        {
                             break;
-                        }
-                    case "FAV"://Fin Atencion Verduleria
-                        {
-                            break;
-                        }
-                    case "FAC1"://Fin Atencion Caja 1 
-                        {
-                            break;
-                        }
-                    case "FAC2"://Fin Atencion Caja 2
-                        {
-                            break;
-                        }
-                    case "FACR"://Fin Atencion Caja R 
-                        {
-                            break;
-                        }
-                    default:
 
-                        break;
+
+                        case "FAC"://Fin Atencion Carniceria
+                            {
+                                break;
+                            }
+
+                        case "FAG"://Fin Atencion Gondola
+                            {
+                                break;
+                            }
+                        case "FAV"://Fin Atencion Verduleria
+                            {
+                                break;
+                            }
+                        case "FAC1"://Fin Atencion Caja 1 
+                            {
+                                break;
+                            }
+                        case "FAC2"://Fin Atencion Caja 2
+                            {
+                                break;
+                            }
+                        case "FACR"://Fin Atencion Caja R 
+                            {
+                                break;
+                            }
+                        default:
+
+                            break;
+                    }
+
+
+                    // DeterminarEventoSiguiente() metodo que va a actualizar EventoSiguiente 
+
+
                 }
 
-                
-                // DeterminarEventoSiguiente() metodo que va a actualizar EventoSiguiente 
+                this.dgv_simulacion.DataSource = dt;
+                this.colorColumnas();
+
+
+
+
 
 
             }
 
 
 
-
-            this.dgv_simulacion.DataSource = dt;
-            this.colorColumnas();
         }
         
         public void proxRecorrido()  // crea la columna del cliente que vino
@@ -143,6 +154,7 @@ namespace Simulacion_TP5
         // -----------------INTERFAZ------------------//
 
         private int horas, desde, hasta;
+
         
         private Boolean validar_campos() // para validar que los valores de los campos del form esten bien ingresados
         {
