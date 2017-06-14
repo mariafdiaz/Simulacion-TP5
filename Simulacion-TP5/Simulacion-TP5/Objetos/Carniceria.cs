@@ -5,15 +5,17 @@ namespace Simulacion_TP5.Objetos
 {
     public class Carniceria 
     {
-        private Queue<Cliente> cola = new Queue<Cliente>();
-        private string estado { get; set; }
+        
+        public string Estado { get; set; }
         public double tiempoAtencion { get; set; }
         public int finAtencion { get; set; }
+        public Queue<Cliente> cola;
+        public Queue<Cliente> Cola { get => cola; set => cola = value; }
 
         public Carniceria()
         {
-            estado = "L";
-            cola = new Queue<Cliente>();
+            Estado = "L";
+            Cola = new Queue<Cliente>();
         }
 
 

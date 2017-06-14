@@ -5,13 +5,14 @@ namespace Simulacion_TP5.Objetos
 {
     public class Gondola 
     {
-        private Queue<Cliente> cola = new Queue<Cliente>();
-        private string estado { get; set; }
+        public string Estado { get; set; }
+        public Queue<Cliente> cola;
+        public Queue<Cliente> Cola { get => cola; set => cola = value; }
         public int finAtencion { get; set; }
 
         public Gondola()
         {
-            estado = "L";
+            Estado = "L";
             cola = new Queue<Cliente>();
         }
 

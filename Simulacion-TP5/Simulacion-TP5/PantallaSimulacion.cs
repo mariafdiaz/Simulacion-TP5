@@ -19,7 +19,7 @@ namespace Simulacion_TP5
         private Carniceria carniceria = new Carniceria();
         private Panaderia panaderia = new Panaderia();
         private Gondola gondola = new Gondola();
-        private Caja1 caja1 = new Caja1();
+        private Caja3 caja3 = new Caja3();
         private Caja2 caja2 = new Caja2();
         private CajaR cajaR = new CajaR();
 
@@ -43,71 +43,119 @@ namespace Simulacion_TP5
                     {
                         case "LLC"://llegada Cliente 
 
-                            
-                            DataRow dr = dt.NewRow();
-                            dr["Evento"] = "Llegada Cliente";
+
+                            DataRow dr1 = dt.NewRow();
+
+                            dr1["Evento"] = "Llegada Cliente";
                             super.Reloj = super.ProximaLlegadaCliente;
                             super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
                             super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
                             super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
-                            dr["Reloj"] = super.Reloj;
-                            dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
-                            dr["TiempoLleg"] = super.LlegadaCliente;
-                            dr["ProxLleg"] = super.ProximaLlegadaCliente;
+                            dr1["Reloj"] = super.Reloj;
+                            dr1["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
+                            dr1["TiempoLleg"] = super.LlegadaCliente;
+                            dr1["ProxLleg"] = super.ProximaLlegadaCliente;
 
                             //Generar recorrido
                             super.AleatorioRecorrido = RND.Next(100);
                             super.IDRecorrido = super.generarRecorrido(super.AleatorioRecorrido);
                             string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
-                            dr["*Recorrido* RND"] = super.AleatorioRecorrido;
-                            dr["Recorrido"] = cadena;
+                            dr1["*Recorrido* RND"] = super.AleatorioRecorrido;
+                            dr1["Recorrido"] = cadena;
                             //Escribo en la Fila los tiempos que no se cambiaron
                             //Los fin atencion de los eventos se setean al principio con -1 , Si nunca se escribió un fin Atencion de un server no debe poner nada en Fin tiempo de la fila siguiente
-                            if(carniceria.finAtencion!= -1){ dr["FinTiempo AtencionC"] = carniceria.finAtencion; }
-                            if (verduleria.finAtencion != -1) { dr["FinTiempo AtencionV"] = verduleria.finAtencion; }
-                            if (panaderia.finAtencion != -1) { dr["*FinAtencion Panadería*"] = panaderia.finAtencion; }
-                            if (gondola.finAtencion != -1) { dr["FinTiempo Atencion Gondola"] = gondola.finAtencion; }
-                            if (caja1.finAtencion != -1) { dr["\nFinTiempoAC3"] = caja1.finAtencion; }           
-                            if (caja2.finAtencion != -1) { dr["FinTiempo AtencionC2"] = caja2.finAtencion; }
-                            if (cajaR.finAtencion != -1) { dr["FinTiempo AtencíonCR"] = cajaR.finAtencion; }
+                            if (carniceria.finAtencion != -1) { dr1["FinTiempo AtencionC"] = carniceria.finAtencion; }
+                            if (verduleria.finAtencion != -1) { dr1["FinTiempo AtencionV"] = verduleria.finAtencion; }
+                            if (panaderia.finAtencion != -1) { dr1["*FinAtencion Panadería*"] = panaderia.finAtencion; }
+                            if (gondola.finAtencion != -1) { dr1["FinTiempo Atencion Gondola"] = gondola.finAtencion; }
+                            if (cajaR.finAtencion != -1) { dr1["FinTiempo AtencíonCR"] = cajaR.finAtencion; }
+                            if (caja2.finAtencion != -1) { dr1["FinTiempo AtencionC2"] = caja2.finAtencion; }
+                            if (caja3.finAtencion != -1) { dr1["\nFinTiempoAC3"] = caja3.finAtencion; }
+                            //Servers
+                           
+                            dr1["*Verduleria* Estado"] = verduleria.Estado;
+                            dr1["*Carniceria* Estado"] = carniceria.Estado;
+                            dr1["*Panaderia* Estado"] = panaderia.Estado;
+                            dr1["*Gondola* Estado"] = gondola.Estado;
+                            dr1["*CajaRapida* Estado"] = cajaR.Estado;
+                            dr1["*Caja2* Estado"] = caja2.Estado;
+                            dr1["*Caja3* Estado"] = caja3.Estado;
+                            
+                            dr1["\nColaV"] = verduleria.Cola.Count;
+                            dr1["\nColaC"] = carniceria.Cola.Count;
+                            dr1["\nColaP"] = panaderia.Cola.Count;
+                            dr1["\nColaG"] = gondola.Cola.Count;
+                            dr1["\nColaCR"] = cajaR.Cola.Count;
+                            dr1["\nColaC2"] = caja2.Cola.Count;
+                            dr1["\nColaC3"] = caja3.Cola.Count;
+
+                            dr1["ContClientes Atendidos"] = super.CantClientesAtendidos;
+
+
+                            //Agregar en alguna Cola
+                            Cliente nuevo = new Cliente();
+                            //verduleria.Cola.Enqueue(nuevo);
+
+
+
                             
 
-                          
 
-                            dt.Rows.Add(dr);
+                            dt.Rows.Add(dr1);
                             break;
 
 
                         case "FAP"://Fin Atencion Panaderia
 
+                            DataRow dr2 = dt.NewRow();
+                            dr2["Evento"] = "Fin atenc Panaderia";
+                            dt.Rows.Add(dr2);
                             break;
 
 
                         case "FAC"://Fin Atencion Carniceria
                             {
+                                DataRow dr3 = dt.NewRow();
+                                dr3["Evento"] = "Fin atenc Carniceria";
+                                dt.Rows.Add(dr3);
                                 break;
                             }
 
                         case "FAG"://Fin Atencion Gondola
                             {
+                                DataRow dr4 = dt.NewRow();
+                                dr4["Evento"] = "Fin atenc Gondola";
+                                dt.Rows.Add(dr4);
                                 break;
                             }
                         case "FAV"://Fin Atencion Verduleria
                             {
-                                ;
+
+                                DataRow dr5 = dt.NewRow();
+                                dr5["Evento"] = "Fin atenc Verduleria";
+                                dt.Rows.Add(dr5);
 
                                 break;
                             }
-                        case "FAC1"://Fin Atencion Caja 1 
+                        case "FAC2"://Fin Atencion Caja 2 
                             {
+                                DataRow dr6 = dt.NewRow();
+                                dr6["Evento"] = "Fin atenc Caja 2";
+                                dt.Rows.Add(dr6);
                                 break;
                             }
-                        case "FAC2"://Fin Atencion Caja 2
+                        case "FAC3"://Fin Atencion Caja 3
                             {
+                                DataRow dr7 = dt.NewRow();
+                                dr7["Evento"] = "Fin atenc Caja 3";
+                                dt.Rows.Add(dr7);
                                 break;
                             }
                         case "FACR"://Fin Atencion Caja R 
                             {
+                                DataRow dr8 = dt.NewRow();
+                                dr8["Evento"] = "Fin atenc Caja R";
+                                dt.Rows.Add(dr8);
                                 break;
                             }
                         default:
@@ -156,7 +204,16 @@ namespace Simulacion_TP5
 
         private int horas, desde, hasta;
 
-        
+
+        private void PantallaSimulacion_Load(object sender, EventArgs e)
+        {
+            lbl_resultado.Text = "";
+
+            // valores por defecto
+            txt_horas.Text = "30";
+            txt_desde.Text = "0";
+            txt_hasta.Text = "30";
+        }
         private Boolean validar_campos() // para validar que los valores de los campos del form esten bien ingresados
         {
             if (txt_horas.Text == "")
@@ -230,7 +287,7 @@ namespace Simulacion_TP5
             lbl_caja2.Visible = true;
             dgv_simulacion.Columns[19].DefaultCellStyle.BackColor = caja2;
             dgv_simulacion.Columns[20].DefaultCellStyle.BackColor = caja2;
-            // CAJA 3
+            // CAJA 1
             Color caja3 = Color.LemonChiffon;
             lbl_caja3.BackColor = caja3;
             lbl_caja3.Visible = true;
@@ -342,11 +399,14 @@ namespace Simulacion_TP5
             verduleria.finAtencion = -1;
             panaderia.finAtencion = -1;
             gondola.finAtencion = -1;
-            caja1.finAtencion = -1;
+            caja3.finAtencion = -1;
             caja2.finAtencion = -1;
             cajaR.finAtencion = -1;
 
+            
+            
 
+            super.CantClientesAtendidos = 0;
             //COLUMNA LLEGADA CLIENTE//
             dr["Reloj"] = super.Reloj;
             dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
@@ -411,15 +471,7 @@ namespace Simulacion_TP5
         {
             InitializeComponent();
         }
-        private void PantallaSimulacion_Load(object sender, EventArgs e)
-        {
-            lbl_resultado.Text = "";
-
-            // valores por defecto
-            txt_horas.Text = "30";
-            txt_desde.Text = "0";
-            txt_hasta.Text = "30";
-        }
+       
 
     }
 }

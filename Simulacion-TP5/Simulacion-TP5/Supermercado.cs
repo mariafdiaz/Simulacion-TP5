@@ -18,7 +18,7 @@ namespace Simulacion_TP5
         private int aleatorioRecorrido; 
         private int idRecorrido;
         private string eventoSiguiente;
-
+        private int contCantClientesAtendidos;
 
 
         //GET Y SET//
@@ -29,7 +29,7 @@ namespace Simulacion_TP5
         public int AleatorioRecorrido { get { return aleatorioRecorrido; }    set { aleatorioRecorrido = value; }}    
         public int IDRecorrido { get { return idRecorrido; } set { idRecorrido = value; }}
         public string EventoSiguiente { get { return eventoSiguiente; } set { eventoSiguiente = value; } }
-
+        public int CantClientesAtendidos { get { return contCantClientesAtendidos; } set { contCantClientesAtendidos = value; } }
 
 
 
