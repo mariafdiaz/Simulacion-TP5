@@ -1,4 +1,6 @@
-﻿namespace Simulacion_TP5.Objetos
+﻿using System.Collections.Generic;
+
+namespace Simulacion_TP5.Objetos
 {
     public class Cliente
     {
@@ -8,7 +10,12 @@
             public int proxLleg { get; set; }
             public int id_recorrido { get; set; }
             public int cantArt { get; set; }
-
-
+            public Queue <int> recorrido;
+            public Queue <int> Recorrido { get => recorrido; set => recorrido = value; }
+        public Cliente()
+        {
+            
+            Recorrido = new Queue<int>();
+        }
     }
 }

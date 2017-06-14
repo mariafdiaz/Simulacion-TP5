@@ -22,7 +22,7 @@ namespace Simulacion_TP5
         private Caja3 caja3 = new Caja3();
         private Caja2 caja2 = new Caja2();
         private CajaR cajaR = new CajaR();
-
+        private int contClientesEntrantes= 0; // sirve para ir numerando los clientes
         
 
 
@@ -34,7 +34,7 @@ namespace Simulacion_TP5
                 inicializarColumnas(); //Todas las columnas menos los clientes           
                 iniciarPrimeraFila();//iniciarPrimeraFila
                
-                agregarColumnaNuevoCliente(); //empezar a funcionar
+                //agregarColumnaNuevoCliente(); //empezar a funcionar
 
                 while (super.Reloj < horas)
                 {
@@ -62,6 +62,129 @@ namespace Simulacion_TP5
                             string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
                             dr1["*Recorrido* RND"] = super.AleatorioRecorrido;
                             dr1["Recorrido"] = cadena;
+                            dr1["ContClientes Atendidos"] = super.CantClientesAtendidos;
+
+                            Cliente nuevo = new Cliente();
+
+
+                            switch (super.IDRecorrido)
+                            {
+                                case 1://Verduleria-Panaderia
+                                    nuevo.Recorrido.Enqueue(11); nuevo.Recorrido.Enqueue(12); nuevo.Recorrido.Enqueue(0);
+                                    nuevo.Estado = "SAV";
+                                    nuevo.cantArt = 1;
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+
+
+                                       contClientesEntrantes = contClientesEntrantes + 1;
+                                        int i1 = contClientesEntrantes;
+
+                                    //Clientes
+                                    
+                                    dt.Columns.Add("*C " + i1 + "* Estado", typeof(string));
+                                    dt.Columns.Add("*C " + i1 + "* Actual IDRecorrido", typeof(Int32));
+                                    dt.Columns.Add("Cont CantArticulos C " + i1, typeof(Int32));
+
+                                     dr1["*C " + i1 + "* Estado"] = nuevo.Estado;
+                                     dr1["*C " + i1 + "* Actual IDRecorrido"] = nuevo.id_recorrido;
+                                     dr1["Cont CantArticulos C " + i1] = nuevo.cantArt;
+                                    
+                                    break;
+
+                                case 2: //Verduleria-Carniceria-Gondola 
+                                    nuevo.Recorrido.Enqueue(21); nuevo.Recorrido.Enqueue(22); nuevo.Recorrido.Enqueue(23); nuevo.Recorrido.Enqueue(0);
+                                    nuevo.Estado = "SAV";
+                                    nuevo.cantArt = 1;
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+
+
+                                    contClientesEntrantes = contClientesEntrantes + 1;
+                                    int i2 = contClientesEntrantes;
+
+                                    //Clientes
+
+                                    dt.Columns.Add("*C " + i2 + "* Estado", typeof(string));
+                                    dt.Columns.Add("*C " + i2 + "* Actual IDRecorrido", typeof(Int32));
+                                    dt.Columns.Add("Cont CantArticulos C " + i2, typeof(Int32));
+
+                                    dr1["*C " + i2 + "* Estado"] = nuevo.Estado;
+                                    dr1["*C " + i2 + "* Actual IDRecorrido"] = nuevo.id_recorrido;
+                                    dr1["Cont CantArticulos C " + i2] = nuevo.cantArt;
+
+                                    break;
+                                case 3: //Panaderia
+                                    nuevo.Recorrido.Enqueue(31); nuevo.Recorrido.Enqueue(0);
+                                    nuevo.Estado = "SAP";
+                                    nuevo.cantArt = 1;
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+
+
+                                    contClientesEntrantes = contClientesEntrantes + 1;
+                                    int i3 = contClientesEntrantes;
+
+                                    //Clientes
+
+                                    dt.Columns.Add("*C " + i3 + "* Estado", typeof(string));
+                                    dt.Columns.Add("*C " + i3 + "* Actual IDRecorrido", typeof(Int32));
+                                    dt.Columns.Add("Cont CantArticulos C " + i3, typeof(Int32));
+
+                                    dr1["*C " + i3 + "* Estado"] = nuevo.Estado;
+                                    dr1["*C " + i3 + "* Actual IDRecorrido"] = nuevo.id_recorrido;
+                                    dr1["Cont CantArticulos C " + i3] = nuevo.cantArt;
+
+                                    
+                                    break;
+                                case 4://Carniceria-Panaderia-Gondola-Verduleria
+                                    nuevo.Recorrido.Enqueue(41); nuevo.Recorrido.Enqueue(42); nuevo.Recorrido.Enqueue(43); nuevo.Recorrido.Enqueue(44); nuevo.Recorrido.Enqueue(0);
+                                    nuevo.Estado = "SAC";
+                                    nuevo.cantArt = 1;
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+
+
+                                    contClientesEntrantes = contClientesEntrantes + 1;
+                                    int i4 = contClientesEntrantes;
+
+                                    //Clientes
+
+                                    dt.Columns.Add("*C " + i4 + "* Estado", typeof(string));
+                                    dt.Columns.Add("*C " + i4 + "* Actual IDRecorrido", typeof(Int32));
+                                    dt.Columns.Add("Cont CantArticulos C " + i4, typeof(Int32));
+
+                                    dr1["*C " + i4 + "* Estado"] = nuevo.Estado;
+                                    dr1["*C " + i4 + "* Actual IDRecorrido"] = nuevo.id_recorrido;
+                                    dr1["Cont CantArticulos C " + i4] = nuevo.cantArt;
+                                    break;
+                                case 5://Gondola
+                                    nuevo.Recorrido.Enqueue(51); nuevo.Recorrido.Enqueue(0);
+                                    nuevo.Estado = "SAG";
+                                    nuevo.cantArt = gondola.generarCantArticulos();
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+
+
+                                    contClientesEntrantes = contClientesEntrantes + 1;
+                                    int i5 = contClientesEntrantes;
+
+                                    //Clientes
+
+                                    dt.Columns.Add("*C " + i5 + "* Estado", typeof(string));
+                                    dt.Columns.Add("*C " + i5 + "* Actual IDRecorrido", typeof(Int32));
+                                    dt.Columns.Add("Cont CantArticulos C " + i5, typeof(Int32));
+
+                                    dr1["*C " + i5 + "* Estado"] = nuevo.Estado;
+                                    dr1["*C " + i5 + "* Actual IDRecorrido"] = nuevo.id_recorrido;
+                                    dr1["Cont CantArticulos C " + i5] = nuevo.cantArt;
+                                    break;
+                                default:
+                                    MessageBox.Show("Hubo un error en el switch de recorrido");
+                                    break; 
+                            }
+
+
+                            //Agregar en alguna Cola
+                           
+                            //verduleria.Cola.Enqueue(nuevo);
+
+
                             //Escribo en la Fila los tiempos que no se cambiaron
                             //Los fin atencion de los eventos se setean al principio con -1 , Si nunca se escribió un fin Atencion de un server no debe poner nada en Fin tiempo de la fila siguiente
                             if (carniceria.finAtencion != -1) { dr1["FinTiempo AtencionC"] = carniceria.finAtencion; }
@@ -72,7 +195,7 @@ namespace Simulacion_TP5
                             if (caja2.finAtencion != -1) { dr1["FinTiempo AtencionC2"] = caja2.finAtencion; }
                             if (caja3.finAtencion != -1) { dr1["\nFinTiempoAC3"] = caja3.finAtencion; }
                             //Servers
-                           
+
                             dr1["*Verduleria* Estado"] = verduleria.Estado;
                             dr1["*Carniceria* Estado"] = carniceria.Estado;
                             dr1["*Panaderia* Estado"] = panaderia.Estado;
@@ -80,7 +203,7 @@ namespace Simulacion_TP5
                             dr1["*CajaRapida* Estado"] = cajaR.Estado;
                             dr1["*Caja2* Estado"] = caja2.Estado;
                             dr1["*Caja3* Estado"] = caja3.Estado;
-                            
+
                             dr1["\nColaV"] = verduleria.Cola.Count;
                             dr1["\nColaC"] = carniceria.Cola.Count;
                             dr1["\nColaP"] = panaderia.Cola.Count;
@@ -89,16 +212,6 @@ namespace Simulacion_TP5
                             dr1["\nColaC2"] = caja2.Cola.Count;
                             dr1["\nColaC3"] = caja3.Cola.Count;
 
-                            dr1["ContClientes Atendidos"] = super.CantClientesAtendidos;
-
-
-                            //Agregar en alguna Cola
-                            Cliente nuevo = new Cliente();
-                            //verduleria.Cola.Enqueue(nuevo);
-
-
-
-                            
 
 
                             dt.Rows.Add(dr1);
@@ -159,7 +272,7 @@ namespace Simulacion_TP5
                                 break;
                             }
                         default:
-
+                            MessageBox.Show("Hubo un error en el switch de Eventos");
                             break;
                     }
 
@@ -185,18 +298,18 @@ namespace Simulacion_TP5
         
         
 
-        private void agregarColumnaNuevoCliente()
-        {
-            int idCliente = 0;
-            idCliente = idCliente + 1;
-            int i = idCliente;
+        //private void agregarColumnaNuevoCliente()
+        //{
+        //    int idCliente = 0;
+        //    idCliente = idCliente + 1;
+        //    int i = idCliente;
 
-            //Clientes
-            dt.Columns.Add("*C " + i + "* Estado", typeof(string));
-            // dt.Columns.Add("Actual IDRecorrido C " + i, typeof(Int32));
-            dt.Columns.Add("*C " + i + "* Actual IDRecorrido", typeof(Int32));
-            dt.Columns.Add("Cont CantArticulos C " + i, typeof(Int32));
-        }
+        //    //Clientes
+        //    dt.Columns.Add("*C " + i + "* Estado", typeof(string));
+        //    // dt.Columns.Add("Actual IDRecorrido C " + i, typeof(Int32));
+        //    dt.Columns.Add("*C " + i + "* Actual IDRecorrido", typeof(Int32));
+        //    dt.Columns.Add("Cont CantArticulos C " + i, typeof(Int32));
+        //}
 
 
 
