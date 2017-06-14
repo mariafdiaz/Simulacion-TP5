@@ -31,6 +31,7 @@ namespace Simulacion_TP5
             {
                 inicializarColumnas(); //Todas las columnas menos los clientes           
                 iniciarPrimeraFila();//iniciarPrimeraFila
+                proxRecorrido();
                 agregarColumnaNuevoCliente(); //empezar a funcionar
 
                 while (super.Reloj < horas)
@@ -73,6 +74,8 @@ namespace Simulacion_TP5
                             }
                         case "FAV"://Fin Atencion Verduleria
                             {
+                                ;
+
                                 break;
                             }
                         case "FAC1"://Fin Atencion Caja 1 
@@ -124,15 +127,18 @@ namespace Simulacion_TP5
             dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
             dr["TiempoLleg"] = super.LlegadaCliente;
             dr["ProxLleg"] = super.ProximaLlegadaCliente;
-            //dr["idRec"] = i;
 
 
             //Generar recorrido
             super.AleatorioRecorrido = RND.Next(100);
             super.IDRecorrido = super.generarRecorrido(super.AleatorioRecorrido);
+            string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
             dr["*Recorrido* RND"] = super.AleatorioRecorrido;
-            dr["Recorrido"] = super.generarCadenaRecorrido(super.IDRecorrido);
-            dr["idRec"] = super.IDRecorrido;
+            dr["Recorrido"] = cadena;
+            this.dgv_simulacion.DataSource = dt;
+            dt.Rows.Add(dr);
+            this.colorColumnas();
+            
 
         }
 
@@ -347,11 +353,11 @@ namespace Simulacion_TP5
             
             
             // COLUMNA RECORRIDO // 
-            super.AleatorioRecorrido = RND.Next(100);
-            super.IDRecorrido = super.generarRecorrido(super.AleatorioRecorrido);
-            string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
-            dr["*Recorrido* RND"] = super.AleatorioRecorrido;
-            dr["Recorrido"] = cadena;
+            //super.AleatorioRecorrido = RND.Next(100);
+            //super.IDRecorrido = super.generarRecorrido(super.AleatorioRecorrido);
+            //string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
+            //dr["*Recorrido* RND"] = super.AleatorioRecorrido;
+            //dr["Recorrido"] = cadena;
             //dr["idRec"] = super.IDRecorrido;
             //// VERDULERIA
             //dr["*FinAtencion Verduleria* RND"] = ;
@@ -393,11 +399,10 @@ namespace Simulacion_TP5
             //ContClientes Atendidos
             dr["ContClientes Atendidos"] = 0;
             dt.Rows.Add(dr);
+
         }
 
 
-
-       
 
         public PantallaSimulacion()
         {

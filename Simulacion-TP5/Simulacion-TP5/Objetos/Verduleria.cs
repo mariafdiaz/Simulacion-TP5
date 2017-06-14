@@ -10,11 +10,6 @@ namespace Simulacion_TP5.Objetos
         public double tiempoAtencion { get; set; }
         public int finAtencion { get; set; }
 
-
-
-        
-
-
         
 
         public Verduleria()
