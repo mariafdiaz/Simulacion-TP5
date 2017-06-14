@@ -15,8 +15,8 @@ namespace Simulacion_TP5
         private double aleatorioLlegadaCliente; //es el rnd que se muestra que calcula el tiempo entre llegadas
         private double llegadaCliente; //tiempo en que llega un cliente
         private double proximaLlegadaCliente; //proxima llegada del cliente - Metodo calcular tiempo proxima llegada(parametro reloj actual + cant de minutos para prox llegada de pasajero)
-        private double aleatorioRecorrido; 
-        private double idRecorrido;
+        private int aleatorioRecorrido; 
+        private int idRecorrido;
         private string eventoSiguiente;
 
 
@@ -26,8 +26,8 @@ namespace Simulacion_TP5
         public double AleatorioLlegadaCliente { get { return aleatorioLlegadaCliente; } set { aleatorioLlegadaCliente = value; }}     
         public double LlegadaCliente { get { return llegadaCliente; } set { llegadaCliente = value; }}   
         public double ProximaLlegadaCliente { get { return proximaLlegadaCliente; } set { proximaLlegadaCliente = value; }}
-        public double AleatorioRecorrido { get { return aleatorioRecorrido; }    set { aleatorioRecorrido = value; }}    
-        public double IDRecorrido { get { return idRecorrido; } set { idRecorrido = value; }}
+        public int AleatorioRecorrido { get { return aleatorioRecorrido; }    set { aleatorioRecorrido = value; }}    
+        public int IDRecorrido { get { return idRecorrido; } set { idRecorrido = value; }}
         public string EventoSiguiente { get { return eventoSiguiente; } set { eventoSiguiente = value; } }
 
 
@@ -65,25 +65,26 @@ namespace Simulacion_TP5
 
 
         //METODOS PARA LOS RECORRIDOS//
-        public int generarRecorrido(double rnd) //para ver en donde cae el aleatorio
+        public int generarRecorrido(int rnd) //para ver en donde cae el aleatorio
         {
             int idRecorrido=0;
-            if (rnd >= 0 || rnd < 20) { idRecorrido = 1; } //Verduleria-Panaderia
-            if (rnd >= 30 || rnd < 50) { idRecorrido = 2; } //Verduleria-Carniceria-Gondola 
-            if (rnd >= 50 || rnd < 60) { idRecorrido = 3; } //Panaderia
-            if (rnd >= 60 || rnd < 80) { idRecorrido = 4; }//Carniceria-Panaderia-Gondola-Verduleria
-            if (rnd >= 80 || rnd < 100) { idRecorrido = 5; }//Gondola
+            if (rnd >= 00 && rnd < 20) { idRecorrido = 1; } //Verduleria-Panaderia
+            else if (rnd >= 30 && rnd < 50) { idRecorrido = 2; } //Verduleria-Carniceria-Gondola 
+            else if (rnd >= 50 && rnd < 60) { idRecorrido = 3; } //Panaderia
+            else if(rnd >= 60 && rnd < 80) { idRecorrido = 4; }//Carniceria-Panaderia-Gondola-Verduleria
+                    else { idRecorrido = 5; } //Gondola
             return idRecorrido;
+            
         }
         
         public string generarCadenaRecorrido(int r)
         {
             string cadenaRecorrido = "";
             if (r == 1) { cadenaRecorrido = "V-P"; }
-            if (r == 2) { cadenaRecorrido = "V-C-G"; }
-            if (r == 3) { cadenaRecorrido = "P"; }
-            if (r == 4) { cadenaRecorrido = "C-P-G-V"; }
-            if (r == 5) { cadenaRecorrido = "G"; }
+            else if (r == 2) { cadenaRecorrido = "V-C-G"; }
+            else if (r == 3) { cadenaRecorrido = "P"; }
+            else if (r == 4) { cadenaRecorrido = "C-P-G-V"; }
+            else { cadenaRecorrido = "G"; }
             return cadenaRecorrido;
         }
 
@@ -94,6 +95,8 @@ namespace Simulacion_TP5
             return rnd;
 
         }
+
+        
 
         
 
