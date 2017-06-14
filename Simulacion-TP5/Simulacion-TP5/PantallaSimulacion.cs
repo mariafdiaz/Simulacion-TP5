@@ -23,6 +23,8 @@ namespace Simulacion_TP5
         private Caja2 caja2 = new Caja2();
         private CajaR cajaR = new CajaR();
 
+        
+
 
         //FUNCIONALIDAD//
         private void btn_generar_Click_1(object sender, EventArgs e)
@@ -31,7 +33,7 @@ namespace Simulacion_TP5
             {
                 inicializarColumnas(); //Todas las columnas menos los clientes           
                 iniciarPrimeraFila();//iniciarPrimeraFila
-                proxRecorrido();
+               
                 agregarColumnaNuevoCliente(); //empezar a funcionar
 
                 while (super.Reloj < horas)
@@ -41,9 +43,9 @@ namespace Simulacion_TP5
                     {
                         case "LLC"://llegada Cliente 
 
-
+                            
                             DataRow dr = dt.NewRow();
-
+                            dr["Evento"] = "Llegada Cliente";
                             super.Reloj = super.ProximaLlegadaCliente;
                             super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
                             super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
@@ -52,7 +54,25 @@ namespace Simulacion_TP5
                             dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
                             dr["TiempoLleg"] = super.LlegadaCliente;
                             dr["ProxLleg"] = super.ProximaLlegadaCliente;
+
+                            //Generar recorrido
+                            super.AleatorioRecorrido = RND.Next(100);
+                            super.IDRecorrido = super.generarRecorrido(super.AleatorioRecorrido);
+                            string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
+                            dr["*Recorrido* RND"] = super.AleatorioRecorrido;
+                            dr["Recorrido"] = cadena;
+                            //Escribo en la Fila los tiempos que no se cambiaron
+                            //Los fin atencion de los eventos se setean al principio con -1 , Si nunca se escribió un fin Atencion de un server no debe poner nada en Fin tiempo de la fila siguiente
+                            if(carniceria.finAtencion!= -1){ dr["FinTiempo AtencionC"] = carniceria.finAtencion; }
+                            if (verduleria.finAtencion != -1) { dr["FinTiempo AtencionV"] = verduleria.finAtencion; }
+                            if (panaderia.finAtencion != -1) { dr["*FinAtencion Panadería*"] = panaderia.finAtencion; }
+                            if (gondola.finAtencion != -1) { dr["FinTiempo Atencion Gondola"] = gondola.finAtencion; }
+                            if (caja1.finAtencion != -1) { dr["\nFinTiempoAC3"] = caja1.finAtencion; }           
+                            if (caja2.finAtencion != -1) { dr["FinTiempo AtencionC2"] = caja2.finAtencion; }
+                            if (cajaR.finAtencion != -1) { dr["FinTiempo AtencíonCR"] = cajaR.finAtencion; }
                             
+
+                          
 
                             dt.Rows.Add(dr);
                             break;
@@ -115,33 +135,7 @@ namespace Simulacion_TP5
 
         }
         
-        public void proxRecorrido()  // crea la columna del cliente que vino
-        {
-            DataRow dr = dt.NewRow();
-            super.Reloj = super.ProximaLlegadaCliente;
-            super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
-            //super.LlegadaCliente = generarPoisson(0.5, super.AleatorioLlegadaCliente);
-            super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
-
-            dr["Reloj"] = super.Reloj;
-            dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
-            dr["TiempoLleg"] = super.LlegadaCliente;
-            dr["ProxLleg"] = super.ProximaLlegadaCliente;
-
-
-            //Generar recorrido
-            super.AleatorioRecorrido = RND.Next(100);
-            super.IDRecorrido = super.generarRecorrido(super.AleatorioRecorrido);
-            string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
-            dr["*Recorrido* RND"] = super.AleatorioRecorrido;
-            dr["Recorrido"] = cadena;
-            this.dgv_simulacion.DataSource = dt;
-            dt.Rows.Add(dr);
-            this.colorColumnas();
-            
-
-        }
-
+        
 
         private void agregarColumnaNuevoCliente()
         {
@@ -343,6 +337,15 @@ namespace Simulacion_TP5
             super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
             super.ProximaLlegadaCliente = super.Reloj + super.LlegadaCliente;
             super.EventoSiguiente = "LLC";
+
+            carniceria.finAtencion = -1;
+            verduleria.finAtencion = -1;
+            panaderia.finAtencion = -1;
+            gondola.finAtencion = -1;
+            caja1.finAtencion = -1;
+            caja2.finAtencion = -1;
+            cajaR.finAtencion = -1;
+
 
             //COLUMNA LLEGADA CLIENTE//
             dr["Reloj"] = super.Reloj;
