@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Simulacion_TP5.Objetos;
+using System.Collections.Generic;
 
 namespace Simulacion_TP5
 {
@@ -296,6 +297,10 @@ namespace Simulacion_TP5
 
                             DataRow dr2 = dt.NewRow();
                             dr2["Evento"] = "Fin atenc Panaderia";
+
+
+
+
                             dt.Rows.Add(dr2);
                             break;
 
@@ -352,7 +357,7 @@ namespace Simulacion_TP5
 
 
                     // DeterminarEventoSiguiente() metodo que va a actualizar EventoSiguiente 
-
+                    super.EventoSiguiente = DeterminarEventoSiguiente();
 
                 }
 
@@ -369,8 +374,29 @@ namespace Simulacion_TP5
 
 
         }
-        
-        
+
+        private String DeterminarEventoSiguiente()
+        {
+            List<double> menorTiempo = new List<double> { carniceria.finAtencion, verduleria.finAtencion, super.ProximaLlegadaCliente, gondola.finAtencion, caja2.finAtencion, panaderia.finAtencion, caja3.finAtencion, cajaR.finAtencion };
+            //remuevo todos los -1
+            menorTiempo.RemoveAll(item => item == -1);
+            //busco el menor tiempo
+            menorTiempo.Sort();
+            double menorTiempoEvento = menorTiempo[0];
+
+            if (menorTiempoEvento == super.ProximaLlegadaCliente) { return "LLC"; }
+            if (menorTiempoEvento == carniceria.finAtencion) { return "FAC"; }
+            if (menorTiempoEvento == verduleria.finAtencion) { return "FAV"; }
+            if(menorTiempoEvento == panaderia.finAtencion) { return "FAP"; }
+            if (menorTiempoEvento == gondola.finAtencion) { return "FAG"; }
+            if (menorTiempoEvento == cajaR.finAtencion) { return "FACR"; }
+            if (menorTiempoEvento == caja2.finAtencion) { return "FAC2"; }
+
+            return "FAC3";
+
+        }
+
+
 
         //private void agregarColumnaNuevoCliente()
         //{
