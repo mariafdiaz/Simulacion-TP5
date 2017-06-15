@@ -1,5 +1,4 @@
 ﻿
-
 using System;
 using System.Data;
 using System.Drawing;
@@ -12,7 +11,7 @@ namespace Simulacion_TP5
     public partial class PantallaSimulacion : Form
     {
         //ATRIBUTOS//
-        private DataTable dt = new DataTable();
+        private DataTable dt;
         private Supermercado super = new Supermercado();
         private static Random RND = new Random();
         //Instaciación de clases
@@ -30,6 +29,7 @@ namespace Simulacion_TP5
         //FUNCIONALIDAD//
         private void btn_generar_Click_1(object sender, EventArgs e)
         {
+            dt = new DataTable();
             if (validar_campos())
             {
                 inicializarColumnas(); //Todas las columnas menos los clientes           
@@ -145,9 +145,7 @@ namespace Simulacion_TP5
                                     contClientesEntrantes = contClientesEntrantes + 1;
                                     int i3 = contClientesEntrantes;
                                     nuevo3.id = i3;
-                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");
-
-                                    
+                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");                                    
 
                                     if (panaderia.Estado == "L")
                                     {
@@ -372,7 +370,7 @@ namespace Simulacion_TP5
             }
 
 
-
+            this.lbl_resultado.Text = "   Llegaron " + contClientesEntrantes + " clientes en " + txt_horas.Text + " horas.";
         }
 
         private String DeterminarEventoSiguiente()
@@ -454,7 +452,7 @@ namespace Simulacion_TP5
 
         private void colorColumnas()
         {
-            Color llegCliente = Color.Aqua;
+            Color llegCliente = Color.Silver;
             dgv_simulacion.Columns[2].DefaultCellStyle.BackColor = llegCliente;
             dgv_simulacion.Columns[3].DefaultCellStyle.BackColor = llegCliente;
             dgv_simulacion.Columns[4].DefaultCellStyle.BackColor = llegCliente;
