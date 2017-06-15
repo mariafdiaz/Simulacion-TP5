@@ -4,25 +4,19 @@ namespace Simulacion_TP5.Objetos
 {
     public class Verduleria
     {
-
         public string Estado { get; set; }
         public Queue<Cliente> cola;
         public Queue<Cliente> Cola { get => cola; set => cola = value; }
         public double tiempoAtencion { get; set; }
-        public int finAtencion { get; set; }
-
-        
+        public int finAtencion { get; set; }        
 
         public Verduleria()
         {
             Estado = "L";
             cola = new Queue<Cliente>();
-
         }
-
-
     }
-    }
+}
 //public Verduleria(string estado, int tiempo, int cola, int tiempoFin)
 //{
 //    // Estado = estado;

@@ -55,8 +55,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Objetos\Caja3.cs" />
-    <Compile Include="Objetos\Caja2.cs" />
+    <Compile Include="Objetos\Caja.cs" />
     <Compile Include="Objetos\CajaR.cs" />
     <Compile Include="Objetos\Carniceria.cs" />
     <Compile Include="Objetos\Cliente.cs" />

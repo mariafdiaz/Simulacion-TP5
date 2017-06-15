@@ -20,8 +20,7 @@ namespace Simulacion_TP5
         private Carniceria carniceria;
         private Panaderia panaderia;
         private Gondola gondola;
-        private Caja3 caja3;
-        private Caja2 caja2;
+        private Caja caja2, caja3;
         private CajaR cajaR;
 
         private List<Cliente> clientes;
@@ -40,8 +39,8 @@ namespace Simulacion_TP5
             carniceria = new Carniceria();
             panaderia = new Panaderia();
             gondola = new Gondola();
-            caja3 = new Caja3();
-            caja2 = new Caja2();
+            caja3 = new Caja();
+            caja2 = new Caja();
             cajaR = new CajaR();
 
             clientes = new List<Cliente>();
@@ -185,16 +184,25 @@ namespace Simulacion_TP5
                         case "FAC2"://Fin Atencion Caja 2 
                             {
                                 dr["Evento"] = "Fin atenc Caja 2";
+                                int nroCliente = caja2.atendido.id;
                                 // BUSCAR LAS COLUMNAS CORRESPONDIENTES AL CLIENTE QUE SE VA
-                                // dt.Columns.RemoveAt(colEstado)
-                                // dt.Columns.RemoveAt(colRecorrido)
-                                // dt.Columns.RemoveAt(colArticulos)
+                                dt.Columns.Remove("*C " + nroCliente + "* Estado");
+                                dt.Columns.Remove("*C " + nroCliente + "* Actual IDRecorrido");
+                                dt.Columns.Remove("Cont CantArticulos C " + nroCliente);
+                                // SACO AL CLIENTE DE LA CAJA
+                                caja2.atendido = null;
                                 break;
                             }
                         case "FAC3"://Fin Atencion Caja 3
                             {
                                 dr["Evento"] = "Fin atenc Caja 3";
-
+                                int nroCliente = caja3.atendido.id;
+                                // BUSCAR LAS COLUMNAS CORRESPONDIENTES AL CLIENTE QUE SE VA
+                                dt.Columns.Remove("*C " + nroCliente + "* Estado");
+                                dt.Columns.Remove("*C " + nroCliente + "* Actual IDRecorrido");
+                                dt.Columns.Remove("Cont CantArticulos C " + nroCliente);
+                                // SACO AL CLIENTE DE LA CAJA
+                                caja3.atendido = null;
                                 break;
                             }
                         case "FACR"://Fin Atencion Caja R 
@@ -227,6 +235,7 @@ namespace Simulacion_TP5
                 nuevo.cantArt = 1;
                 //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
                 verduleria.Estado = "Oc";
+
                 //double rndV = Math.Round(RND.NextDouble());
                 //verduleria.tiempoAtencion = super.generarPoisson(-2, rndV);
                 //verduleria.finAtencion = (int)(verduleria.tiempoAtencion + super.Reloj);
