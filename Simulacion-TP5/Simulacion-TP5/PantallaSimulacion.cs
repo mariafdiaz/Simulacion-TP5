@@ -258,11 +258,11 @@ namespace Simulacion_TP5
                 //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
                 carniceria.Estado = "Oc";
 
-                //
-                //
-                // R E V I S E N   E S T O ! ! !
-                //
-                //
+                //////////////
+                //////////////
+                ////////////// R E V I S E N   E S T O ! ! !
+                //////////////
+                //////////////
                 carniceria.tiempoAtencion = super.generarUniforme(0, 0.05027);                  // 3' 1'' = 0.05027 (HORARIO -> DECIMAL)  
                 dr["*FinAtencion Carniceria* RND"] = super.Reloj + carniceria.tiempoAtencion;   
                 dr["Tiempo AtencionC"] = carniceria.tiempoAtencion;
