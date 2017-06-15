@@ -12,16 +12,17 @@ namespace Simulacion_TP5
     {
         //ATRIBUTOS//
         private DataTable dt;
-        private Supermercado super = new Supermercado();
-        private static Random RND = new Random();
+        private Supermercado super;
+        private static Random RND;
+
         //Instaciación de clases
-        private Verduleria verduleria = new Verduleria();
-        private Carniceria carniceria = new Carniceria();
-        private Panaderia panaderia = new Panaderia();
-        private Gondola gondola = new Gondola();
-        private Caja3 caja3 = new Caja3();
-        private Caja2 caja2 = new Caja2();
-        private CajaR cajaR = new CajaR();
+        private Verduleria verduleria;
+        private Carniceria carniceria;
+        private Panaderia panaderia;
+        private Gondola gondola;
+        private Caja3 caja3;
+        private Caja2 caja2;
+        private CajaR cajaR;
         private int contClientesEntrantes; // sirve para ir numerando los clientes
 
         // inicializa todos los objetos para le ejecucion de la simulacion
@@ -31,6 +32,7 @@ namespace Simulacion_TP5
             dt = new DataTable();
             super = new Supermercado();
             RND = new Random();
+
             //Instaciación de clases
             verduleria = new Verduleria();
             carniceria = new Carniceria();
