@@ -12,10 +12,14 @@ namespace Simulacion_TP5.Objetos
         public int finAtencion { get; set; }
 
         public Panaderia()
-        {
-            
+        {            
             Estado = "L";
             cola = new Queue<Cliente>();
+        }
+
+        public void atencion(Cliente c)
+        {
+
         }
 
       /*  public int calcularFinAtencion(int inicioAtencion)

@@ -19,8 +19,7 @@ namespace Simulacion_TP5
         private int idRecorrido;
         private string eventoSiguiente;
         private int contCantClientesAtendidos;
-
-
+        
         //GET Y SET//
         public double Reloj { get {return reloj; } set { reloj = value; }} 
         public double AleatorioLlegadaCliente { get { return aleatorioLlegadaCliente; } set { aleatorioLlegadaCliente = value; }}     
@@ -30,9 +29,7 @@ namespace Simulacion_TP5
         public int IDRecorrido { get { return idRecorrido; } set { idRecorrido = value; }}
         public string EventoSiguiente { get { return eventoSiguiente; } set { eventoSiguiente = value; } }
         public int CantClientesAtendidos { get { return contCantClientesAtendidos; } set { contCantClientesAtendidos = value; } }
-
-
-
+        
         //METODOS MATEMATICOS//
         public double generarPoisson(double lambda, double RND)
         {
@@ -49,21 +46,12 @@ namespace Simulacion_TP5
             } while (p >= a);
             return x;
         }
-
-
-
+                
         public double generarUniforme(double min, double max)
         {
             return Math.Round(RND.NextDouble() * (max - min) + min, 4);
         }
-        public void sigEvento()
-        {
-
-
-        }
-
-
-
+        
         //METODOS PARA LOS RECORRIDOS//
         public int generarRecorrido(int rnd) //para ver en donde cae el aleatorio
         {

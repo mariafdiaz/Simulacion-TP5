@@ -13,8 +13,7 @@ namespace Simulacion_TP5.Objetos
             public Queue <string> recorrido;
             public Queue <string> Recorrido { get => recorrido; set => recorrido = value; }
         public Cliente()
-        {
-            
+        {            
             Recorrido = new Queue<string>();
         }
     }
