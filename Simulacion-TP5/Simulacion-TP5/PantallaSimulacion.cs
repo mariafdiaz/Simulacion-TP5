@@ -141,14 +141,28 @@ namespace Simulacion_TP5
                                     break;
                                 case 3: //Panaderia
                                     Cliente nuevo3 = new Cliente();
-                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");
-                                    nuevo3.Estado = "SAP";
-                                    nuevo3.cantArt = 1;
-                                    //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-
-
                                     contClientesEntrantes = contClientesEntrantes + 1;
                                     int i3 = contClientesEntrantes;
+                                    nuevo3.id = i3;
+                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");
+
+                                    
+
+                                    if (panaderia.Estado == "L")
+                                    {
+                                        nuevo3.Estado = "SAP";
+                                        nuevo3.cantArt = 1;
+                                        //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+                                        panaderia.Estado = "Oc";
+                                    }
+                                    else
+                                    {
+
+                                        nuevo3.Estado = "EAP";
+                                        panaderia.Cola.Enqueue(nuevo3);
+
+                                    }
+
 
                                     //Clientes
 
@@ -164,14 +178,29 @@ namespace Simulacion_TP5
                                     break;
                                 case 4://Carniceria-Panaderia-Gondola-Verduleria
                                     Cliente nuevo4 = new Cliente();
-                                    nuevo4.Recorrido.Enqueue("C"); nuevo4.Recorrido.Enqueue("P"); nuevo4.Recorrido.Enqueue("G"); nuevo4.Recorrido.Enqueue("V"); nuevo4.Recorrido.Enqueue("C");//C de que va a caja
-                                    nuevo4.Estado = "SAC";
-                                    nuevo4.cantArt = 1;
-                                    //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-
-
                                     contClientesEntrantes = contClientesEntrantes + 1;
                                     int i4 = contClientesEntrantes;
+                                    nuevo4.id = i4;
+                                    nuevo4.Recorrido.Enqueue("C"); nuevo4.Recorrido.Enqueue("P"); nuevo4.Recorrido.Enqueue("G"); nuevo4.Recorrido.Enqueue("V"); nuevo4.Recorrido.Enqueue("C");//C de que va a caja
+
+
+                                   
+                                    if (carniceria.Estado == "L")
+                                    {
+                                        nuevo4.Estado = "SAC";
+                                        nuevo4.cantArt = 1;
+                                        //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+                                        carniceria.Estado = "Oc";
+                                    }
+                                    else
+                                    {
+
+                                        nuevo4.Estado = "EAC";
+                                        carniceria.Cola.Enqueue(nuevo4);
+
+                                    }
+
+
 
                                     //Clientes
 
@@ -185,14 +214,29 @@ namespace Simulacion_TP5
                                     break;
                                 case 5://Gondola
                                     Cliente nuevo5 = new Cliente();
-                                    nuevo5.Recorrido.Enqueue("G"); nuevo5.Recorrido.Enqueue("C");
-                                    nuevo5.Estado = "SAG";
-                                    nuevo5.cantArt = gondola.generarCantArticulos();
-                                    //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-
-
                                     contClientesEntrantes = contClientesEntrantes + 1;
                                     int i5 = contClientesEntrantes;
+                                    nuevo5.id = i5;
+                                    nuevo5.Recorrido.Enqueue("G"); nuevo5.Recorrido.Enqueue("C");
+
+
+                                    
+                                    if (gondola.Estado == "L")
+                                    {
+                                        nuevo5.Estado = "SAG";
+                                        nuevo5.cantArt = gondola.generarCantArticulos();
+                                        //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+                                        gondola.Estado = "Oc";
+                                    }
+                                    else
+                                    {
+
+                                        nuevo5.Estado = "EAG";
+                                        gondola.Cola.Enqueue(nuevo5);
+
+                                    }
+
+
 
                                     //Clientes
 
