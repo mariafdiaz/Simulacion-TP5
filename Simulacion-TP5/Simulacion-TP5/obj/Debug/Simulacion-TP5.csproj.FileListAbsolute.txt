@@ -26,3 +26,12 @@ C:\Users\garba\Desktop\SIMULACION\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\o
 C:\Users\garba\Desktop\SIMULACION\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion_TP5.PantallaSimulacion.resources
 C:\Users\garba\Desktop\SIMULACION\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion_TP5.Properties.Resources.resources
 C:\Users\garba\Desktop\SIMULACION\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.csproj.GenerateResource.Cache
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\bin\Debug\Simulacion-TP5.exe.config
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\bin\Debug\Simulacion-TP5.exe
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\bin\Debug\Simulacion-TP5.pdb
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.csprojResolveAssemblyReference.cache
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion_TP5.PantallaSimulacion.resources
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion_TP5.Properties.Resources.resources
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.csproj.GenerateResource.Cache
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.exe
+D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.pdb

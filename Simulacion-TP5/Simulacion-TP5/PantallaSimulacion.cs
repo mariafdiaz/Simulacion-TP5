@@ -1,17 +1,17 @@
 ﻿
-
 using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Simulacion_TP5.Objetos;
+using System.Collections.Generic;
 
 namespace Simulacion_TP5
 {
     public partial class PantallaSimulacion : Form
     {
         //ATRIBUTOS//
-        private DataTable dt = new DataTable();
+        private DataTable dt;
         private Supermercado super = new Supermercado();
         private static Random RND = new Random();
         //Instaciación de clases
@@ -29,6 +29,7 @@ namespace Simulacion_TP5
         //FUNCIONALIDAD//
         private void btn_generar_Click_1(object sender, EventArgs e)
         {
+            dt = new DataTable();
             if (validar_campos())
             {
                 inicializarColumnas(); //Todas las columnas menos los clientes           
@@ -144,9 +145,7 @@ namespace Simulacion_TP5
                                     contClientesEntrantes = contClientesEntrantes + 1;
                                     int i3 = contClientesEntrantes;
                                     nuevo3.id = i3;
-                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");
-
-                                    
+                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");                                    
 
                                     if (panaderia.Estado == "L")
                                     {
@@ -296,6 +295,10 @@ namespace Simulacion_TP5
 
                             DataRow dr2 = dt.NewRow();
                             dr2["Evento"] = "Fin atenc Panaderia";
+
+
+
+
                             dt.Rows.Add(dr2);
                             break;
 
@@ -352,7 +355,7 @@ namespace Simulacion_TP5
 
 
                     // DeterminarEventoSiguiente() metodo que va a actualizar EventoSiguiente 
-
+                    super.EventoSiguiente = DeterminarEventoSiguiente();
 
                 }
 
@@ -367,10 +370,31 @@ namespace Simulacion_TP5
             }
 
 
+            this.lbl_resultado.Text = "   Llegaron " + contClientesEntrantes + " clientes en " + txt_horas.Text + " horas.";
+        }
+
+        private String DeterminarEventoSiguiente()
+        {
+            List<double> menorTiempo = new List<double> { carniceria.finAtencion, verduleria.finAtencion, super.ProximaLlegadaCliente, gondola.finAtencion, caja2.finAtencion, panaderia.finAtencion, caja3.finAtencion, cajaR.finAtencion };
+            //remuevo todos los -1
+            menorTiempo.RemoveAll(item => item == -1);
+            //busco el menor tiempo
+            menorTiempo.Sort();
+            double menorTiempoEvento = menorTiempo[0];
+
+            if (menorTiempoEvento == super.ProximaLlegadaCliente) { return "LLC"; }
+            if (menorTiempoEvento == carniceria.finAtencion) { return "FAC"; }
+            if (menorTiempoEvento == verduleria.finAtencion) { return "FAV"; }
+            if(menorTiempoEvento == panaderia.finAtencion) { return "FAP"; }
+            if (menorTiempoEvento == gondola.finAtencion) { return "FAG"; }
+            if (menorTiempoEvento == cajaR.finAtencion) { return "FACR"; }
+            if (menorTiempoEvento == caja2.finAtencion) { return "FAC2"; }
+
+            return "FAC3";
 
         }
-        
-        
+
+
 
         //private void agregarColumnaNuevoCliente()
         //{
@@ -428,7 +452,7 @@ namespace Simulacion_TP5
 
         private void colorColumnas()
         {
-            Color llegCliente = Color.Aqua;
+            Color llegCliente = Color.Silver;
             dgv_simulacion.Columns[2].DefaultCellStyle.BackColor = llegCliente;
             dgv_simulacion.Columns[3].DefaultCellStyle.BackColor = llegCliente;
             dgv_simulacion.Columns[4].DefaultCellStyle.BackColor = llegCliente;
