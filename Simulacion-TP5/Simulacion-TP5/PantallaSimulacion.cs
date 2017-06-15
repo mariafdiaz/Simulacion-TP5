@@ -70,7 +70,14 @@ namespace Simulacion_TP5
 
                             DataRow dr1 = dt.NewRow();
 
-                            dr1["Evento"] = "Llegada Cliente";
+                            // ESTO ESTABA ADENTRO DE CADA CASE, LO SACO PORQUE ES INDEPENDIENTE DEL RECORRIDO AL QUE VAYA
+                            Cliente nuevo = new Cliente();
+                            clientes.Add(nuevo);
+                            contClientesEntrantes = contClientesEntrantes + 1;
+                            int i = contClientesEntrantes;
+                            nuevo.id = i;
+
+                            dr1["Evento"] = "Lleg. Cliente " + nuevo.id;
                             super.Reloj = super.ProximaLlegadaCliente;
                             super.AleatorioLlegadaCliente = Math.Round(RND.NextDouble(), 4);
                             super.LlegadaCliente = super.generarPoisson(0.5, super.AleatorioLlegadaCliente);
@@ -86,14 +93,7 @@ namespace Simulacion_TP5
                             string cadena = super.generarCadenaRecorrido(super.IDRecorrido);
                             dr1["*Recorrido* RND"] = super.AleatorioRecorrido;
                             dr1["Recorrido"] = cadena;
-                            dr1["ContClientes Atendidos"] = super.CantClientesAtendidos;
-
-                            // ESTO ESTABA ADENTRO DE CADA CASE, LO SACO PORQUE ES INDEPENDIENTE DEL RECORRIDO AL QUE VAYA
-                            Cliente nuevo = new Cliente();
-                            clientes.Add(nuevo);
-                            contClientesEntrantes = contClientesEntrantes + 1;
-                            int i = contClientesEntrantes;
-                            nuevo.id = i;
+                            dr1["ContClientes Atendidos"] = super.CantClientesAtendidos;                            
 
                             switch (super.IDRecorrido)
                             {
