@@ -22,19 +22,36 @@ namespace Simulacion_TP5
         private Caja3 caja3 = new Caja3();
         private Caja2 caja2 = new Caja2();
         private CajaR cajaR = new CajaR();
-        private int contClientesEntrantes= 0; // sirve para ir numerando los clientes
-        
+        private int contClientesEntrantes; // sirve para ir numerando los clientes
 
+        // inicializa todos los objetos para le ejecucion de la simulacion
+        private void inicializarObjetosSimulacion()
+        {
+            //ATRIBUTOS//
+            dt = new DataTable();
+            super = new Supermercado();
+            RND = new Random();
+            //Instaciación de clases
+            verduleria = new Verduleria();
+            carniceria = new Carniceria();
+            panaderia = new Panaderia();
+            gondola = new Gondola();
+            caja3 = new Caja3();
+            caja2 = new Caja2();
+            cajaR = new CajaR();
+            contClientesEntrantes = 0;
+        }
 
         //FUNCIONALIDAD//
         private void btn_generar_Click_1(object sender, EventArgs e)
         {
-            dt = new DataTable();
+            this.inicializarObjetosSimulacion();
+
             if (validar_campos())
             {
                 inicializarColumnas(); //Todas las columnas menos los clientes           
                 iniciarPrimeraFila();//iniciarPrimeraFila
-               
+
                 //agregarColumnaNuevoCliente(); //empezar a funcionar
 
                 while (super.Reloj < horas)
@@ -65,7 +82,7 @@ namespace Simulacion_TP5
                             dr1["Recorrido"] = cadena;
                             dr1["ContClientes Atendidos"] = super.CantClientesAtendidos;
 
-                            
+
 
 
                             switch (super.IDRecorrido)
@@ -79,13 +96,14 @@ namespace Simulacion_TP5
 
                                     if (verduleria.Estado == "L")
                                     {
-                                        
+
                                         nuevo1.Estado = "SAV";
                                         nuevo1.cantArt = 1;
                                         //nuevo1.id_recorrido = nuevo.Recorrido.Dequeue();
                                         verduleria.Estado = "Oc";
                                     }
-                                    else {
+                                    else
+                                    {
 
                                         nuevo1.Estado = "EAV";
                                         verduleria.Cola.Enqueue(nuevo1);
@@ -100,10 +118,10 @@ namespace Simulacion_TP5
                                     dt.Columns.Add("*C " + i1 + "* Actual IDRecorrido", typeof(Int32));
                                     dt.Columns.Add("Cont CantArticulos C " + i1, typeof(Int32));
 
-                                     dr1["*C " + i1 + "* Estado"] = nuevo1.Estado;
-                                     dr1["*C " + i1 + "* Actual IDRecorrido"] = nuevo1.id_recorrido;
-                                     dr1["Cont CantArticulos C " + i1] = nuevo1.cantArt;
-                                    
+                                    dr1["*C " + i1 + "* Estado"] = nuevo1.Estado;
+                                    dr1["*C " + i1 + "* Actual IDRecorrido"] = nuevo1.id_recorrido;
+                                    dr1["Cont CantArticulos C " + i1] = nuevo1.cantArt;
+
                                     break;
 
                                 case 2: //Verduleria-Carniceria-Gondola 
@@ -120,14 +138,15 @@ namespace Simulacion_TP5
                                         //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
                                         verduleria.Estado = "Oc";
                                     }
-                                    else {
+                                    else
+                                    {
 
                                         nuevo2.Estado = "EAV";
                                         verduleria.Cola.Enqueue(nuevo2);
 
                                     }
 
-                                    
+
 
                                     //Clientes
 
@@ -145,7 +164,7 @@ namespace Simulacion_TP5
                                     contClientesEntrantes = contClientesEntrantes + 1;
                                     int i3 = contClientesEntrantes;
                                     nuevo3.id = i3;
-                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");                                    
+                                    nuevo3.Recorrido.Enqueue("P"); nuevo3.Recorrido.Enqueue("C");
 
                                     if (panaderia.Estado == "L")
                                     {
@@ -173,7 +192,7 @@ namespace Simulacion_TP5
                                     dr1["*C " + i3 + "* Actual IDRecorrido"] = nuevo3.id_recorrido;
                                     dr1["Cont CantArticulos C " + i3] = nuevo3.cantArt;
 
-                                    
+
                                     break;
                                 case 4://Carniceria-Panaderia-Gondola-Verduleria
                                     Cliente nuevo4 = new Cliente();
@@ -183,7 +202,7 @@ namespace Simulacion_TP5
                                     nuevo4.Recorrido.Enqueue("C"); nuevo4.Recorrido.Enqueue("P"); nuevo4.Recorrido.Enqueue("G"); nuevo4.Recorrido.Enqueue("V"); nuevo4.Recorrido.Enqueue("C");//C de que va a caja
 
 
-                                   
+
                                     if (carniceria.Estado == "L")
                                     {
                                         nuevo4.Estado = "SAC";
@@ -219,7 +238,7 @@ namespace Simulacion_TP5
                                     nuevo5.Recorrido.Enqueue("G"); nuevo5.Recorrido.Enqueue("C");
 
 
-                                    
+
                                     if (gondola.Estado == "L")
                                     {
                                         nuevo5.Estado = "SAG";
@@ -249,12 +268,12 @@ namespace Simulacion_TP5
                                     break;
                                 default:
                                     MessageBox.Show("Hubo un error en el switch de recorrido");
-                                    break; 
+                                    break;
                             }
 
 
                             //Agregar en alguna Cola
-                           
+
                             //verduleria.Cola.Enqueue(nuevo);
 
 
@@ -332,6 +351,10 @@ namespace Simulacion_TP5
                                 DataRow dr6 = dt.NewRow();
                                 dr6["Evento"] = "Fin atenc Caja 2";
                                 dt.Rows.Add(dr6);
+                                // BUSCAR LAS COLUMNAS CORRESPONDIENTES AL CLIENTE QUE SE VA
+                                // dt.Columns.RemoveAt(colEstado)
+                                // dt.Columns.RemoveAt(colRecorrido)
+                                // dt.Columns.RemoveAt(colArticulos)
                                 break;
                             }
                         case "FAC3"://Fin Atencion Caja 3
@@ -385,7 +408,7 @@ namespace Simulacion_TP5
             if (menorTiempoEvento == super.ProximaLlegadaCliente) { return "LLC"; }
             if (menorTiempoEvento == carniceria.finAtencion) { return "FAC"; }
             if (menorTiempoEvento == verduleria.finAtencion) { return "FAV"; }
-            if(menorTiempoEvento == panaderia.finAtencion) { return "FAP"; }
+            if (menorTiempoEvento == panaderia.finAtencion) { return "FAP"; }
             if (menorTiempoEvento == gondola.finAtencion) { return "FAG"; }
             if (menorTiempoEvento == cajaR.finAtencion) { return "FACR"; }
             if (menorTiempoEvento == caja2.finAtencion) { return "FAC2"; }
@@ -435,7 +458,7 @@ namespace Simulacion_TP5
             desde = Convert.ToInt32(txt_desde.Text);
             hasta = Convert.ToInt32(txt_hasta.Text);
 
-            
+
             if (desde >= hasta || hasta > horas) // valida el rango
             {
                 MessageBox.Show("El rango ingresado no es válido.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -459,7 +482,7 @@ namespace Simulacion_TP5
             Color recorrido = Color.LightGray;
             dgv_simulacion.Columns[5].DefaultCellStyle.BackColor = recorrido;
             dgv_simulacion.Columns[6].DefaultCellStyle.BackColor = recorrido;
-           
+
             // VERDULERIA
             Color verduleria = Color.LightGreen;
             lbl_verduleria.BackColor = verduleria;
@@ -614,8 +637,8 @@ namespace Simulacion_TP5
             caja2.finAtencion = -1;
             cajaR.finAtencion = -1;
 
-            
-            
+
+
 
             super.CantClientesAtendidos = 0;
             //COLUMNA LLEGADA CLIENTE//
@@ -623,9 +646,9 @@ namespace Simulacion_TP5
             dr["*Llegada cliente* RND"] = super.AleatorioLlegadaCliente;
             dr["TiempoLleg"] = super.LlegadaCliente;
             dr["ProxLleg"] = super.ProximaLlegadaCliente;
-            
-            
-            
+
+
+
             // COLUMNA RECORRIDO // 
             //super.AleatorioRecorrido = RND.Next(100);
             //super.IDRecorrido = super.generarRecorrido(super.AleatorioRecorrido);
@@ -669,7 +692,7 @@ namespace Simulacion_TP5
             {
                 dr["\nCola" + item] = 0;
             }
-            
+
             //ContClientes Atendidos
             dr["ContClientes Atendidos"] = 0;
             dt.Rows.Add(dr);
@@ -682,7 +705,7 @@ namespace Simulacion_TP5
         {
             InitializeComponent();
         }
-       
+
 
     }
 }
