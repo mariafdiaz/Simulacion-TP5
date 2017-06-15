@@ -53,8 +53,8 @@ namespace Simulacion_TP5
             if (validar_campos())
             {
                 this.inicializarObjetosSimulacion();
-                inicializarColumnas(); //Todas las columnas menos los clientes           
-                iniciarPrimeraFila();//iniciarPrimeraFila
+                this.inicializarColumnas(); //Todas las columnas menos los clientes           
+                this.iniciarPrimeraFila();//iniciarPrimeraFila
 
                 //agregarColumnaNuevoCliente(); //empezar a funcionar
 
@@ -114,7 +114,7 @@ namespace Simulacion_TP5
                                     this.servicioGondola(nuevo, dr);                                              
                                     break;
                                 default:
-                                    MessageBox.Show("Hubo un error en el switch de recorrido");
+                                    MessageBox.Show("Hubo un error en el switch de recorrido.");
                                     break;
                             }
 
@@ -235,13 +235,12 @@ namespace Simulacion_TP5
                 nuevo.cantArt = 1;
                 //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
                 verduleria.Estado = "Oc";
-
-                //double rndV = Math.Round(RND.NextDouble());
-                //verduleria.tiempoAtencion = super.generarPoisson(-2, rndV);
-                //verduleria.finAtencion = (int)(verduleria.tiempoAtencion + super.Reloj);
-                //dr["*FinAtencion Verduleria* RND"] = rndV;
-                //dr["Tiempo AtencionV"] = verduleria.tiempoAtencion;
-                //dr["FinTiempo AtencionV"] = verduleria.finAtencion;
+                double rnd = Math.Round(RND.NextDouble());
+                dr["*FinAtencion Verduleria* RND"] = rnd;
+                verduleria.tiempoAtencion = super.generarPoisson(-0.0333, rnd);                  // 2' = 0.0333 (HORARIO -> DECIMAL)          
+                dr["Tiempo AtencionV"] = verduleria.tiempoAtencion;
+                //verduleria.finAtencion = verduleria.tiempoAtencion + super.Reloj;             // ESTO HACE QUE SE CLAVE POR ESO LO COMENTE
+                dr["FinTiempo AtencionV"] = verduleria.finAtencion;
             }
             else
             {
@@ -258,6 +257,15 @@ namespace Simulacion_TP5
                 nuevo.cantArt = 1;
                 //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
                 carniceria.Estado = "Oc";
+
+                //
+                //
+                // R E V I S E N   E S T O ! ! !
+                //
+                //
+                carniceria.tiempoAtencion = super.generarUniforme(0, 0.05027);                  // 3' 1'' = 0.05027 (HORARIO -> DECIMAL)  
+                dr["*FinAtencion Carniceria* RND"] = super.Reloj + carniceria.tiempoAtencion;   
+                dr["Tiempo AtencionC"] = carniceria.tiempoAtencion;
             }
             else
             {
@@ -274,6 +282,7 @@ namespace Simulacion_TP5
                 nuevo.cantArt = 1;
                 //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
                 panaderia.Estado = "Oc";
+                dr["*FinAtencion Panadería*"] = super.Reloj + 0.05;      // 3' = 0.05 (HORARIO -> DECIMAL)
             }
             else
             {
@@ -287,9 +296,13 @@ namespace Simulacion_TP5
             if (gondola.Estado == "L")
             {
                 nuevo.Estado = "SAG";
-                nuevo.cantArt = gondola.generarCantArticulos();
+                double rnd = Math.Round(RND.NextDouble());
+                nuevo.cantArt = gondola.generarCantArticulos(rnd);
                 //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-                gondola.Estado = "Oc";
+                gondola.Estado = "Oc";          // 1' = 0.0166 (HORARIO -> DECIMAL)
+                dr["*FinAtencion Gondola* RND"] = rnd;
+                dr["Cant Articulos Gondola"] = nuevo.cantArt;
+                dr["FinTiempo Atencion Gondola"] = gondola.getFinAtencion(nuevo.cantArt, super.Reloj);
             }
             else
             {

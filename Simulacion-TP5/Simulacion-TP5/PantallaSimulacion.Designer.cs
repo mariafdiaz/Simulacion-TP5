@@ -51,6 +51,8 @@
             // 
             // dgv_simulacion
             // 
+            this.dgv_simulacion.AllowUserToAddRows = false;
+            this.dgv_simulacion.AllowUserToDeleteRows = false;
             this.dgv_simulacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -58,6 +60,7 @@
             this.dgv_simulacion.Location = new System.Drawing.Point(219, 27);
             this.dgv_simulacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_simulacion.Name = "dgv_simulacion";
+            this.dgv_simulacion.ReadOnly = true;
             this.dgv_simulacion.Size = new System.Drawing.Size(1082, 616);
             this.dgv_simulacion.TabIndex = 0;
             // 
@@ -134,7 +137,7 @@
             this.lbl_verduleria.Name = "lbl_verduleria";
             this.lbl_verduleria.Size = new System.Drawing.Size(199, 34);
             this.lbl_verduleria.TabIndex = 27;
-            this.lbl_verduleria.Text = "Verduleria";
+            this.lbl_verduleria.Text = "Verdulería";
             this.lbl_verduleria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_verduleria.Visible = false;
             // 

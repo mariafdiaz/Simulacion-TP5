@@ -8,7 +8,7 @@ namespace Simulacion_TP5.Objetos
         public Queue<Cliente> cola;
         public Queue<Cliente> Cola { get => cola; set => cola = value; }
         public double tiempoAtencion { get; set; }
-        public int finAtencion { get; set; }        
+        public double finAtencion { get; set; }        
 
         public Verduleria()
         {

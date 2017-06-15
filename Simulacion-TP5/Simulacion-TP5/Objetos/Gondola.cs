@@ -16,11 +16,9 @@ namespace Simulacion_TP5.Objetos
             cola = new Queue<Cliente>();
         }
 
-        public int generarCantArticulos()
+        public int generarCantArticulos(double rnd)
         {
             int cant = 0;
-            Random rndAux = new Random();
-            double rnd = Math.Round(rndAux.NextDouble(), 4);
 
             if (rnd >= 0 || rnd < 20) cant = 1;
             if (rnd >= 20 || rnd < 40) cant = 2;
