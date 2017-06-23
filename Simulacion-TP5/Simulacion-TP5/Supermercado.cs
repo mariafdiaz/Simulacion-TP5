@@ -83,11 +83,15 @@ namespace Simulacion_TP5
             return rnd;
 
         }
+        public double generarUniformeCarniceria(double RND)
+        {
+            return Math.Round(RND * (3- 1) + 1, 4);
+        }
 
-        
-
-        
 
 
-}
+
+
+
+    }
 }

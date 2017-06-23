@@ -35,3 +35,12 @@ D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5
 D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.csproj.GenerateResource.Cache
 D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.exe
 D:\Agus\Agus Drive\Académico\4° AÑO\SIM\SIM_TP5\Simulacion-TP5\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.pdb
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\bin\Debug\Simulacion-TP5.exe.config
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\bin\Debug\Simulacion-TP5.exe
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\bin\Debug\Simulacion-TP5.pdb
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.csprojResolveAssemblyReference.cache
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion_TP5.PantallaSimulacion.resources
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion_TP5.Properties.Resources.resources
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.csproj.GenerateResource.Cache
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.exe
+C:\Users\Javier\Source\Repos\Simulacion-TP5 8\Simulacion-TP5\Simulacion-TP5\obj\Debug\Simulacion-TP5.pdb

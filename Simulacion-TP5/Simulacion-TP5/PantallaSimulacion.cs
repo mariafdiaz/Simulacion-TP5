@@ -95,23 +95,116 @@ namespace Simulacion_TP5
                             {
                                 case 1://Verduleria-Panaderia                                    
                                     nuevo.Recorrido.Enqueue("V"); nuevo.Recorrido.Enqueue("P"); nuevo.Recorrido.Enqueue("C");
-                                    this.servicioVerduleria(nuevo, dr);
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();//saco de la cola
+                                    if (verduleria.Estado == "L")
+                                    {
+                                        nuevo.Estado = "SAV";
+                                        nuevo.cantArt = 1;
+                                        
+                                        verduleria.Estado = "Oc";
+                                        double rnd = Math.Round(RND.NextDouble(), 4);
+                                        dr["*FinAtencion Verduleria* RND"] = rnd;
+                                        verduleria.tiempoAtencion = super.generarPoisson(2, rnd);                  // 2' = 0.0333 (HORARIO -> DECIMAL)          
+                                        dr["Tiempo AtencionV"] = verduleria.tiempoAtencion;
+                                        verduleria.finAtencion = verduleria.tiempoAtencion + super.Reloj;             // ESTO HACE QUE SE CLAVE POR ESO LO COMENTE
+                                        dr["FinTiempo AtencionV"] = verduleria.finAtencion;
+                                        verduleria.Cola.Enqueue(nuevo);//Si esta Siendo Atendido tambien lo meto en cola para no perderlo
+                                        dr["\nColaV"] = verduleria.Cola.Count - 1;
+                                       
+                                    }
+                                    else
+                                    {
+                                        nuevo.Estado = "EAV";
+                                        verduleria.Cola.Enqueue(nuevo);
+                                        dr["\nColaV"] = verduleria.Cola.Count - 1;
+                                    };
                                     break;
                                 case 2: //Verduleria-Carniceria-Gondola 
-                                    nuevo.Recorrido.Enqueue("V"); nuevo.Recorrido.Enqueue("C"); nuevo.Recorrido.Enqueue("G"); nuevo.Recorrido.Enqueue("C");
-                                    this.servicioVerduleria(nuevo, dr);
+                                    nuevo.Recorrido.Enqueue("V"); nuevo.Recorrido.Enqueue("Ca"); nuevo.Recorrido.Enqueue("G"); nuevo.Recorrido.Enqueue("C");
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();//saco de la cola
+                                    if (verduleria.Estado == "L")
+                                    {
+                                        nuevo.Estado = "SAV";
+                                        nuevo.cantArt = 1;
+
+                                        verduleria.Estado = "Oc";
+                                        double rnd = Math.Round(RND.NextDouble(), 4);
+                                        dr["*FinAtencion Verduleria* RND"] = rnd;
+                                        verduleria.tiempoAtencion = super.generarPoisson(2, rnd);                        
+                                        dr["Tiempo AtencionV"] = verduleria.tiempoAtencion;
+                                        verduleria.finAtencion = verduleria.tiempoAtencion + super.Reloj;             // ESTO HACE QUE SE CLAVE POR ESO LO COMENTE
+                                        dr["FinTiempo AtencionV"] = verduleria.finAtencion;
+                                        verduleria.Cola.Enqueue(nuevo);//Si esta Siendo Atendido tambien lo meto en cola para no perderlo
+                                        dr["\nColaV"] = verduleria.Cola.Count - 1;
+                                    }
+                                    else
+                                    {
+                                        nuevo.Estado = "EAV";
+                                        verduleria.Cola.Enqueue(nuevo);
+                                        dr["\nColaV"] = verduleria.Cola.Count - 1;
+                                    };
                                     break;
                                 case 3: //Panaderia
                                     nuevo.Recorrido.Enqueue("P"); nuevo.Recorrido.Enqueue("C");
-                                    this.servicioPanaderia(nuevo, dr);
+                                    if (panaderia.Estado == "L")
+                                    {
+                                        nuevo.Estado = "SAP";
+                                        nuevo.cantArt = 1;
+                                        //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
+                                        panaderia.Estado = "Oc";
+                                        dr["*FinAtencion Panadería*"] = super.Reloj + 0.05;      // 3' = 0.05 (HORARIO -> DECIMAL)
+                                        panaderia.Cola.Enqueue(nuevo);//Si esta Siendo Atendido tambien lo meto en cola para no perderlo
+                                    }
+                                    else
+                                    {
+                                        nuevo.Estado = "EAP";
+                                        panaderia.Cola.Enqueue(nuevo);
+                                    }
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();//saco de la cola
                                     break;
                                 case 4://Carniceria-Panaderia-Gondola-Verduleria
-                                    nuevo.Recorrido.Enqueue("C"); nuevo.Recorrido.Enqueue("P"); nuevo.Recorrido.Enqueue("G"); nuevo.Recorrido.Enqueue("V"); nuevo.Recorrido.Enqueue("C");//C de que va a caja
-                                    this.servicioCarniceria(nuevo, dr);
+                                    nuevo.Recorrido.Enqueue("Ca"); nuevo.Recorrido.Enqueue("P"); nuevo.Recorrido.Enqueue("G"); nuevo.Recorrido.Enqueue("V"); nuevo.Recorrido.Enqueue("C");//C de que va a caja
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();//saco de la cola
+                                    if (carniceria.Estado == "L")
+                                    {
+                                        nuevo.Estado = "SAC";
+                                        nuevo.cantArt = 1;
+
+                                        carniceria.Estado = "Oc";
+                                        double rnd = Math.Round(RND.NextDouble(), 4);
+                                        dr["*FinAtencion Carniceria* RND"] = rnd;
+                                        carniceria.tiempoAtencion = super.generarUniformeCarniceria(rnd);                  // 3' 1'' = 0.05027 (HORARIO -> DECIMAL)  
+                                        dr["FinTiempo AtencionC"] = super.Reloj + carniceria.tiempoAtencion;
+                                        dr["Tiempo AtencionC"] = carniceria.tiempoAtencion;
+                                        carniceria.Cola.Enqueue(nuevo);//Si esta Siendo Atendido tambien lo meto en cola para no perderlo
+                                    }
+                                    else
+                                    {
+                                        nuevo.Estado = "EAC";
+                                        carniceria.Cola.Enqueue(nuevo);
+                                    }
+                                    
                                     break;
                                 case 5://Gondola
                                     nuevo.Recorrido.Enqueue("G"); nuevo.Recorrido.Enqueue("C");
-                                    this.servicioGondola(nuevo, dr);                                              
+                                    if (gondola.Estado == "L")
+                                    {
+                                        nuevo.Estado = "SAG";
+                                        double rnd = Math.Round(RND.NextDouble(), 4);
+                                        nuevo.cantArt = gondola.generarCantArticulos(rnd);
+                                        
+                                        gondola.Estado = "Oc";          // 1' = 0.0166 (HORARIO -> DECIMAL)
+                                        dr["*FinAtencion Gondola* RND"] = rnd;
+                                        dr["Cant Articulos Gondola"] = nuevo.cantArt;
+                                        dr["FinTiempo Atencion Gondola"] = gondola.getFinAtencion(nuevo.cantArt, super.Reloj);
+                                        gondola.Cola.Enqueue(nuevo);//Si esta Siendo Atendido tambien lo meto en cola para no perderlo
+                                    }
+                                    else
+                                    {
+                                        nuevo.Estado = "EAG";
+                                        gondola.Cola.Enqueue(nuevo);
+                                    }
+                                    nuevo.id_recorrido = nuevo.Recorrido.Dequeue();//saco el recorrido G del recorrido total del cliente
                                     break;
                                 default:
                                     MessageBox.Show("Hubo un error en el switch de recorrido.");
@@ -121,11 +214,11 @@ namespace Simulacion_TP5
                             // ACA VA LA OTRA PARTE QUE TAMBIEN ESTABA AL FINAL DE CADA CASE, QUE TAMBIEN ES INDEPENDIENTE DEL RECORRIDO
                             //Clientes
                             dt.Columns.Add("*C " + i + "* Estado", typeof(string));
-                            dt.Columns.Add("*C " + i + "* Actual IDRecorrido", typeof(Int32));
+                            dt.Columns.Add("*C " + i + "* Actual seccion", typeof(string));
                             dt.Columns.Add("Cont CantArticulos C " + i, typeof(Int32));
 
                             dr["*C " + i + "* Estado"] = nuevo.Estado;
-                            dr["*C " + i + "* Actual IDRecorrido"] = nuevo.id_recorrido;
+                            dr["*C " + i + "* Actual seccion"] = nuevo.id_recorrido;
                             dr["Cont CantArticulos C " + i] = nuevo.cantArt;
 
 
@@ -151,7 +244,7 @@ namespace Simulacion_TP5
                             dr["*Caja2* Estado"] = caja2.Estado;
                             dr["*Caja3* Estado"] = caja3.Estado;
 
-                            dr["\nColaV"] = verduleria.Cola.Count;
+                           
                             dr["\nColaC"] = carniceria.Cola.Count;
                             dr["\nColaP"] = panaderia.Cola.Count;
                             dr["\nColaG"] = gondola.Cola.Count;
@@ -178,8 +271,68 @@ namespace Simulacion_TP5
                         case "FAV"://Fin Atencion Verduleria
                             {
                                 dr["Evento"] = "Fin atenc Verduleria";
+                                super.Reloj = verduleria.finAtencion;
+                                dr["Reloj"] = super.Reloj;
+                                dr["ProxLleg"] = super.ProximaLlegadaCliente;
+
+                                if (verduleria.Cola.Count != 0)
+                                {
+                                    Cliente elQueAcabaDeSerAtendido = verduleria.Cola.Dequeue();
+
+                                    if (elQueAcabaDeSerAtendido.Recorrido.ToString() == "Ca") { carniceria.Cola.Enqueue(elQueAcabaDeSerAtendido); }
+                                    if (elQueAcabaDeSerAtendido.Recorrido.ToString() == "G") { gondola.Cola.Enqueue(elQueAcabaDeSerAtendido); }
+                                    if (elQueAcabaDeSerAtendido.Recorrido.ToString() == "P") { panaderia.Cola.Enqueue(elQueAcabaDeSerAtendido); }
+                                    if (elQueAcabaDeSerAtendido.Recorrido.ToString() == "V") { verduleria.Cola.Enqueue(elQueAcabaDeSerAtendido); }
+                                    if (elQueAcabaDeSerAtendido.Recorrido.ToString() == "C") { caja2.Cola.Enqueue(elQueAcabaDeSerAtendido); }
+                                    
+                                    double rnd = Math.Round(RND.NextDouble(), 4);
+                                    dr["*FinAtencion Verduleria* RND"] = rnd;
+                                    verduleria.tiempoAtencion = super.generarPoisson(-2, rnd);                  // 2' = 0.0333 (HORARIO -> DECIMAL)          
+                                    dr["Tiempo AtencionV"] = verduleria.tiempoAtencion;
+                                    verduleria.finAtencion = verduleria.tiempoAtencion + super.Reloj;             // ESTO HACE QUE SE CLAVE POR ESO LO COMENTE
+                                    dr["FinTiempo AtencionV"] = verduleria.finAtencion;
+                                    dr["*Verduleria* Estado"] = verduleria.Estado;
+                                    dr["*Carniceria* Estado"] = carniceria.Estado;
+                                    dr["*Panaderia* Estado"] = panaderia.Estado;
+                                    dr["*Gondola* Estado"] = gondola.Estado;
+                                    dr["*CajaRapida* Estado"] = cajaR.Estado;
+                                    dr["*Caja2* Estado"] = caja2.Estado;
+                                    dr["*Caja3* Estado"] = caja3.Estado;
+
+                                    dr["\nColaV"] = verduleria.Cola.Count;
+                                    dr["\nColaC"] = carniceria.Cola.Count;
+                                    dr["\nColaP"] = panaderia.Cola.Count;
+                                    dr["\nColaG"] = gondola.Cola.Count;
+                                    dr["\nColaCR"] = cajaR.Cola.Count;
+                                    dr["\nColaC2"] = caja2.Cola.Count;
+                                    dr["\nColaC3"] = caja3.Cola.Count;
+
+                                }
+                                else {
+
+                                    verduleria.finAtencion = -1;             
+                                    
+                                    verduleria.Estado = "L";
+                                    dr["*Verduleria* Estado"] = verduleria.Estado;
+                                    dr["*Carniceria* Estado"] = carniceria.Estado;
+                                    dr["*Panaderia* Estado"] = panaderia.Estado;
+                                    dr["*Gondola* Estado"] = gondola.Estado;
+                                    dr["*CajaRapida* Estado"] = cajaR.Estado;
+                                    dr["*Caja2* Estado"] = caja2.Estado;
+                                    dr["*Caja3* Estado"] = caja3.Estado;
+
+                                    dr["\nColaV"] = verduleria.Cola.Count;
+                                    dr["\nColaC"] = carniceria.Cola.Count;
+                                    dr["\nColaP"] = panaderia.Cola.Count;
+                                    dr["\nColaG"] = gondola.Cola.Count;
+                                    dr["\nColaCR"] = cajaR.Cola.Count;
+                                    dr["\nColaC2"] = caja2.Cola.Count;
+                                    dr["\nColaC3"] = caja3.Cola.Count;
+
+                                }
 
                                 break;
+                               
                             }
                         case "FAC2"://Fin Atencion Caja 2 
                             {
@@ -187,7 +340,7 @@ namespace Simulacion_TP5
                                 int nroCliente = caja2.atendido.id;
                                 // BUSCAR LAS COLUMNAS CORRESPONDIENTES AL CLIENTE QUE SE VA
                                 dt.Columns.Remove("*C " + nroCliente + "* Estado");
-                                dt.Columns.Remove("*C " + nroCliente + "* Actual IDRecorrido");
+                                dt.Columns.Remove("*C " + nroCliente + "* Actual seccion");
                                 dt.Columns.Remove("Cont CantArticulos C " + nroCliente);
                                 // SACO AL CLIENTE DE LA CAJA
                                 caja2.atendido = null;
@@ -199,7 +352,7 @@ namespace Simulacion_TP5
                                 int nroCliente = caja3.atendido.id;
                                 // BUSCAR LAS COLUMNAS CORRESPONDIENTES AL CLIENTE QUE SE VA
                                 dt.Columns.Remove("*C " + nroCliente + "* Estado");
-                                dt.Columns.Remove("*C " + nroCliente + "* Actual IDRecorrido");
+                                dt.Columns.Remove("*C " + nroCliente + "* Actual seccion");
                                 dt.Columns.Remove("Cont CantArticulos C " + nroCliente);
                                 // SACO AL CLIENTE DE LA CAJA
                                 caja3.atendido = null;
@@ -227,89 +380,7 @@ namespace Simulacion_TP5
             this.lbl_resultado.Text = "   En total, llegaron " + contClientesEntrantes + " clientes al supermercado en " + txt_horas.Text + " horas.";
         }
 
-        private void servicioVerduleria(Cliente nuevo, DataRow dr)
-        {
-            if (verduleria.Estado == "L")
-            {
-                nuevo.Estado = "SAV";
-                nuevo.cantArt = 1;
-                //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-                verduleria.Estado = "Oc";
-                double rnd = Math.Round(RND.NextDouble());
-                dr["*FinAtencion Verduleria* RND"] = rnd;
-                verduleria.tiempoAtencion = super.generarPoisson(-0.0333, rnd);                  // 2' = 0.0333 (HORARIO -> DECIMAL)          
-                dr["Tiempo AtencionV"] = verduleria.tiempoAtencion;
-                //verduleria.finAtencion = verduleria.tiempoAtencion + super.Reloj;             // ESTO HACE QUE SE CLAVE POR ESO LO COMENTE
-                dr["FinTiempo AtencionV"] = verduleria.finAtencion;
-            }
-            else
-            {
-                nuevo.Estado = "EAV";
-                verduleria.Cola.Enqueue(nuevo);
-            }
-        }
-
-        private void servicioCarniceria(Cliente nuevo, DataRow dr)
-        {
-            if (carniceria.Estado == "L")
-            {
-                nuevo.Estado = "SAC";
-                nuevo.cantArt = 1;
-                //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-                carniceria.Estado = "Oc";
-
-                //////////////
-                //////////////
-                ////////////// R E V I S E N   E S T O ! ! !
-                //////////////
-                //////////////
-                carniceria.tiempoAtencion = super.generarUniforme(0, 0.05027);                  // 3' 1'' = 0.05027 (HORARIO -> DECIMAL)  
-                dr["*FinAtencion Carniceria* RND"] = super.Reloj + carniceria.tiempoAtencion;   
-                dr["Tiempo AtencionC"] = carniceria.tiempoAtencion;
-            }
-            else
-            {
-                nuevo.Estado = "EAC";
-                carniceria.Cola.Enqueue(nuevo);
-            }
-        }
-
-        private void servicioPanaderia(Cliente nuevo, DataRow dr)
-        {
-            if (panaderia.Estado == "L")
-            {
-                nuevo.Estado = "SAP";
-                nuevo.cantArt = 1;
-                //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-                panaderia.Estado = "Oc";
-                dr["*FinAtencion Panadería*"] = super.Reloj + 0.05;      // 3' = 0.05 (HORARIO -> DECIMAL)
-            }
-            else
-            {
-                nuevo.Estado = "EAP";
-                panaderia.Cola.Enqueue(nuevo);
-            }
-        }
-
-        private void servicioGondola(Cliente nuevo, DataRow dr)
-        {
-            if (gondola.Estado == "L")
-            {
-                nuevo.Estado = "SAG";
-                double rnd = Math.Round(RND.NextDouble());
-                nuevo.cantArt = gondola.generarCantArticulos(rnd);
-                //nuevo.id_recorrido = nuevo.Recorrido.Dequeue();
-                gondola.Estado = "Oc";          // 1' = 0.0166 (HORARIO -> DECIMAL)
-                dr["*FinAtencion Gondola* RND"] = rnd;
-                dr["Cant Articulos Gondola"] = nuevo.cantArt;
-                dr["FinTiempo Atencion Gondola"] = gondola.getFinAtencion(nuevo.cantArt, super.Reloj);
-            }
-            else
-            {
-                nuevo.Estado = "EAG";
-                gondola.Cola.Enqueue(nuevo);
-            }
-        }
+       
 
         private String DeterminarEventoSiguiente()
         {
@@ -342,8 +413,8 @@ namespace Simulacion_TP5
 
         //    //Clientes
         //    dt.Columns.Add("*C " + i + "* Estado", typeof(string));
-        //    // dt.Columns.Add("Actual IDRecorrido C " + i, typeof(Int32));
-        //    dt.Columns.Add("*C " + i + "* Actual IDRecorrido", typeof(Int32));
+        //    // dt.Columns.Add("Actual seccion C " + i, typeof(Int32));
+        //    dt.Columns.Add("*C " + i + "* Actual seccion", typeof(Int32));
         //    dt.Columns.Add("Cont CantArticulos C " + i, typeof(Int32));
         //}        
 
