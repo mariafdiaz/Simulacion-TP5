@@ -19,7 +19,8 @@ namespace Simulacion_TP5
         private int idRecorrido;
         private string eventoSiguiente;
         private int contCantClientesAtendidos;
-        
+
+
         //GET Y SET//
         public double Reloj { get {return reloj; } set { reloj = value; }} 
         public double AleatorioLlegadaCliente { get { return aleatorioLlegadaCliente; } set { aleatorioLlegadaCliente = value; }}     
@@ -29,7 +30,9 @@ namespace Simulacion_TP5
         public int IDRecorrido { get { return idRecorrido; } set { idRecorrido = value; }}
         public string EventoSiguiente { get { return eventoSiguiente; } set { eventoSiguiente = value; } }
         public int CantClientesAtendidos { get { return contCantClientesAtendidos; } set { contCantClientesAtendidos = value; } }
-        
+
+
+
         //METODOS MATEMATICOS//
         public double generarPoisson(double lambda, double RND)
         {
@@ -46,18 +49,22 @@ namespace Simulacion_TP5
             } while (p >= a);
             return x;
         }
-                
-        public double generarUniforme(double min, double max)
+
+
+
+        public double generarUniforme(double RND)
         {
-            return Math.Round(RND.NextDouble() * (max - min) + min, 4);
+            return Math.Round(RND * (3 - 1) + 1, 4);
         }
         
+
+
         //METODOS PARA LOS RECORRIDOS//
         public int generarRecorrido(int rnd) //para ver en donde cae el aleatorio
         {
             int idRecorrido=0;
             if (rnd >= 00 && rnd < 20) { idRecorrido = 1; } //Verduleria-Panaderia
-            else if (rnd >= 30 && rnd < 50) { idRecorrido = 2; } //Verduleria-Carniceria-Gondola 
+            else if (rnd >= 20 && rnd < 50) { idRecorrido = 2; } //Verduleria-Carniceria-Gondola 
             else if (rnd >= 50 && rnd < 60) { idRecorrido = 3; } //Panaderia
             else if(rnd >= 60 && rnd < 80) { idRecorrido = 4; }//Carniceria-Panaderia-Gondola-Verduleria
                     else { idRecorrido = 5; } //Gondola
@@ -83,15 +90,11 @@ namespace Simulacion_TP5
             return rnd;
 
         }
-        public double generarUniformeCarniceria(double RND)
-        {
-            return Math.Round(RND * (3- 1) + 1, 4);
-        }
+
+        
+
+        
 
 
-
-
-
-
-    }
+}
 }

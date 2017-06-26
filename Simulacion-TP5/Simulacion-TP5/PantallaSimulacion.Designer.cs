@@ -19,7 +19,7 @@
             }
             base.Dispose(disposing);
         }
-
+        
         #region Código generado por el Diseñador de Windows Forms
 
         /// <summary>
@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_simulacion = new System.Windows.Forms.DataGridView();
             this.lbl_gondola = new System.Windows.Forms.Label();
             this.lbl_caja3 = new System.Windows.Forms.Label();
@@ -56,45 +51,14 @@
             // 
             // dgv_simulacion
             // 
-            this.dgv_simulacion.AllowUserToAddRows = false;
-            this.dgv_simulacion.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_simulacion.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_simulacion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_simulacion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_simulacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_simulacion.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_simulacion.Location = new System.Drawing.Point(219, 27);
+            this.dgv_simulacion.Location = new System.Drawing.Point(239, 27);
             this.dgv_simulacion.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgv_simulacion.Name = "dgv_simulacion";
-            this.dgv_simulacion.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_simulacion.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dgv_simulacion.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgv_simulacion.Size = new System.Drawing.Size(1082, 616);
+            this.dgv_simulacion.Size = new System.Drawing.Size(1042, 616);
             this.dgv_simulacion.TabIndex = 0;
             // 
             // lbl_gondola
@@ -102,7 +66,7 @@
             this.lbl_gondola.BackColor = System.Drawing.Color.Gainsboro;
             this.lbl_gondola.Location = new System.Drawing.Point(14, 496);
             this.lbl_gondola.Name = "lbl_gondola";
-            this.lbl_gondola.Size = new System.Drawing.Size(199, 34);
+            this.lbl_gondola.Size = new System.Drawing.Size(218, 34);
             this.lbl_gondola.TabIndex = 33;
             this.lbl_gondola.Text = "Góndola";
             this.lbl_gondola.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -113,7 +77,7 @@
             this.lbl_caja3.BackColor = System.Drawing.Color.Gainsboro;
             this.lbl_caja3.Location = new System.Drawing.Point(14, 609);
             this.lbl_caja3.Name = "lbl_caja3";
-            this.lbl_caja3.Size = new System.Drawing.Size(199, 34);
+            this.lbl_caja3.Size = new System.Drawing.Size(218, 34);
             this.lbl_caja3.TabIndex = 32;
             this.lbl_caja3.Text = "Caja 3";
             this.lbl_caja3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -124,7 +88,7 @@
             this.lbl_caja2.BackColor = System.Drawing.Color.Gainsboro;
             this.lbl_caja2.Location = new System.Drawing.Point(14, 571);
             this.lbl_caja2.Name = "lbl_caja2";
-            this.lbl_caja2.Size = new System.Drawing.Size(199, 34);
+            this.lbl_caja2.Size = new System.Drawing.Size(218, 34);
             this.lbl_caja2.TabIndex = 31;
             this.lbl_caja2.Text = "Caja 2";
             this.lbl_caja2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -135,7 +99,7 @@
             this.lbl_cajaRapida.BackColor = System.Drawing.Color.Gainsboro;
             this.lbl_cajaRapida.Location = new System.Drawing.Point(14, 534);
             this.lbl_cajaRapida.Name = "lbl_cajaRapida";
-            this.lbl_cajaRapida.Size = new System.Drawing.Size(199, 34);
+            this.lbl_cajaRapida.Size = new System.Drawing.Size(218, 34);
             this.lbl_cajaRapida.TabIndex = 30;
             this.lbl_cajaRapida.Text = "Caja Rápida";
             this.lbl_cajaRapida.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -146,7 +110,7 @@
             this.lbl_panaderia.BackColor = System.Drawing.Color.Gainsboro;
             this.lbl_panaderia.Location = new System.Drawing.Point(14, 458);
             this.lbl_panaderia.Name = "lbl_panaderia";
-            this.lbl_panaderia.Size = new System.Drawing.Size(199, 34);
+            this.lbl_panaderia.Size = new System.Drawing.Size(218, 34);
             this.lbl_panaderia.TabIndex = 29;
             this.lbl_panaderia.Text = "Panadería";
             this.lbl_panaderia.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -157,7 +121,7 @@
             this.lbl_carniceria.BackColor = System.Drawing.Color.Gainsboro;
             this.lbl_carniceria.Location = new System.Drawing.Point(14, 420);
             this.lbl_carniceria.Name = "lbl_carniceria";
-            this.lbl_carniceria.Size = new System.Drawing.Size(199, 34);
+            this.lbl_carniceria.Size = new System.Drawing.Size(218, 34);
             this.lbl_carniceria.TabIndex = 28;
             this.lbl_carniceria.Text = "Carnicería";
             this.lbl_carniceria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,19 +132,19 @@
             this.lbl_verduleria.BackColor = System.Drawing.Color.Gainsboro;
             this.lbl_verduleria.Location = new System.Drawing.Point(14, 382);
             this.lbl_verduleria.Name = "lbl_verduleria";
-            this.lbl_verduleria.Size = new System.Drawing.Size(199, 34);
+            this.lbl_verduleria.Size = new System.Drawing.Size(218, 34);
             this.lbl_verduleria.TabIndex = 27;
-            this.lbl_verduleria.Text = "Verdulería";
+            this.lbl_verduleria.Text = "Verduleria";
             this.lbl_verduleria.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbl_verduleria.Visible = false;
             // 
             // btn_generar
             // 
             this.btn_generar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_generar.Location = new System.Drawing.Point(14, 194);
+            this.btn_generar.Location = new System.Drawing.Point(14, 231);
             this.btn_generar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_generar.Name = "btn_generar";
-            this.btn_generar.Size = new System.Drawing.Size(199, 38);
+            this.btn_generar.Size = new System.Drawing.Size(218, 38);
             this.btn_generar.TabIndex = 26;
             this.btn_generar.Text = "Generar simulación";
             this.btn_generar.UseVisualStyleBackColor = true;
@@ -189,7 +153,7 @@
             // txt_horas
             // 
             this.txt_horas.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txt_horas.Location = new System.Drawing.Point(99, 155);
+            this.txt_horas.Location = new System.Drawing.Point(107, 191);
             this.txt_horas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_horas.Name = "txt_horas";
             this.txt_horas.Size = new System.Drawing.Size(91, 25);
@@ -200,11 +164,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label3.Location = new System.Drawing.Point(14, 158);
+            this.label3.Location = new System.Drawing.Point(14, 195);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 17);
+            this.label3.Size = new System.Drawing.Size(87, 17);
             this.label3.TabIndex = 24;
-            this.label3.Text = "Cant. horas";
+            this.label3.Text = "Cant. minutos";
             // 
             // groupBox1
             // 
@@ -217,7 +181,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(199, 120);
+            this.groupBox1.Size = new System.Drawing.Size(218, 145);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rango a mostrar";
@@ -225,7 +189,7 @@
             // txt_hasta
             // 
             this.txt_hasta.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txt_hasta.Location = new System.Drawing.Point(85, 75);
+            this.txt_hasta.Location = new System.Drawing.Point(93, 86);
             this.txt_hasta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_hasta.Name = "txt_hasta";
             this.txt_hasta.Size = new System.Drawing.Size(91, 25);
@@ -236,7 +200,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.label2.Location = new System.Drawing.Point(38, 83);
+            this.label2.Location = new System.Drawing.Point(38, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 17);
             this.label2.TabIndex = 2;
@@ -245,7 +209,7 @@
             // txt_desde
             // 
             this.txt_desde.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.txt_desde.Location = new System.Drawing.Point(85, 42);
+            this.txt_desde.Location = new System.Drawing.Point(93, 46);
             this.txt_desde.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_desde.Name = "txt_desde";
             this.txt_desde.Size = new System.Drawing.Size(91, 25);
@@ -268,7 +232,7 @@
             this.lbl_resultado.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lbl_resultado.Location = new System.Drawing.Point(0, 647);
             this.lbl_resultado.Name = "lbl_resultado";
-            this.lbl_resultado.Size = new System.Drawing.Size(1313, 46);
+            this.lbl_resultado.Size = new System.Drawing.Size(1316, 46);
             this.lbl_resultado.TabIndex = 34;
             this.lbl_resultado.Text = " Resultados de la simulación";
             this.lbl_resultado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -278,7 +242,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1313, 693);
+            this.ClientSize = new System.Drawing.Size(1316, 693);
             this.Controls.Add(this.lbl_resultado);
             this.Controls.Add(this.lbl_gondola);
             this.Controls.Add(this.lbl_caja3);

@@ -8,54 +8,21 @@ namespace Simulacion_TP5.Objetos
         
         public string Estado { get; set; }
         public double tiempoAtencion { get; set; }
-        public int finAtencion { get; set; }
+        public double finAtencion { get; set; }
         public Queue<Cliente> cola;
         public Queue<Cliente> Cola { get => cola; set => cola = value; }
+        public Cliente clienteSirviendose;//Cliente actual que esta siendo atendido
+       
 
         public Carniceria()
         {
             Estado = "L";
             Cola = new Queue<Cliente>();
+            clienteSirviendose = null;
         }
 
 
     }
     
 }
-//public String estadoCliente()
-//{
-//    string estadoCliente = "";
-//    if (Estado == "Oc")
-//    {
-//        estadoCliente = "EAV";
-//        Cola = Cola + 1;
-//    }
-//    else
-//    {
-//        estadoCliente = "SAV";
-//        Estado = "Oc";
-//        if (Cola > 0)
-//        {
-//            Cola = Cola - 1;
-//        }
-//    }
-//    return estadoCliente;
-//}
 
-//public int calcularFinAtencion(int inicioAtencion)
-//{
-//    Random RND = new Random();
-//    double x = 0;
-
-//  //  if (Estado == "L")
-//   // {
-//        x = Math.Round(RND.NextDouble() * (B - A) + A, 4);
-//    //    finAtencion = tiempoAtencion + inicioAtencion;
-//  //  }
-//   // else
-//   // {
-//        tiempoAtencion = 0;
-//        finAtencion = 0;
-//    }
-//    return (int)x;
-//}
